@@ -16,7 +16,7 @@ Use it only for status, handoff, blockers, and workstream coordination. Confirme
 
 **Requested by:** author (2026-10-08 JST)  
 **Owner:** this repository  
-**Status:** IN PROGRESS — dedicated repository created; design/tooling migration underway
+**Status:** DONE — dedicated repository established and Project-owned design/tooling migrated
 
 Repository:
 `sucRo-RimWorld/Ancient-Medieval-Japan-Medieval-Overhaul-Japanization`
@@ -27,7 +27,7 @@ Confirmed baseline:
 - role: MO Patch + MO Retexture;
 - not a new Core and not the global tech-lock layer;
 - independent AMJ modules stay independent;
-- Project pre-split design is being migrated here and will be reduced to a project-level pointer after migration.
+- Project pre-split design has been migrated here; Project now keeps only ownership/roadmap pointers.
 
 Implementation order after migration:
 1. research visibility/prerequisites;
@@ -41,7 +41,19 @@ Implementation order after migration:
 
 ## MOJ-002 — Production implementation
 
-**Status:** OPEN — begins after migration validation
+**Status:** OPEN — migration validation complete; first Research Patch unit is next
+
+Migration evidence:
+- repository initialization: `65ca35f5e99a5cc72d568a548af86e873d104d38`
+- ownership / Design / About baseline: `5dfaad2a092c158aac5551f23304a693023d1f88`
+- research/data/tooling migration: `677bb363e24ce7e9c210cade2d4e04530828ad20`
+- Project pointer cleanup: `97c3a5da8d0ad6d72754ac3467ac7c2c75b6582e`
+
+Package identity:
+- `sucro.ancientmedievaljapan.medievaloverhauljapanization`
+- hard dependency: `DankPyon.Medieval.Overhaul`
+
+No GitHub Actions workflow is enabled yet. Add CI only after the static checks are stable enough to avoid notification spam.
 
 First implementation unit:
 - implement target research visibility/prerequisite graph from the authoritative research graph and CSV;
