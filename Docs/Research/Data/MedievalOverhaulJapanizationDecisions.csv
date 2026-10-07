@@ -1,0 +1,76 @@
+kind,def_name,decision,japanese_role,mechanics_action,generation_refs,implementation_gate
+ResearchProjectDef,DankPyon_CarrierBirds,HIDE,,disconnect prerequisite and preserve upstream Def,,remove as Exploration prerequisite
+ResearchProjectDef,DankPyon_Tar,HIDE,,disconnect normal historical progression,,preserve upstream compatibility
+ResearchProjectDef,CarpetMaking,HIDE_FROM_JAPANIZED_TREE,,undo MO medieval-tree use,,do not relabel carpet as tatami
+ResearchProjectDef,DankPyon_Smoker,HIDE,,hide normal unlock,,drying remains preferred baseline
+ResearchProjectDef,DankPyon_Windmill,HIDE,,hide normal unlock,,reroute DBH for Medieval wind-pump research
+ResearchProjectDef,DankPyon_Watermill,KEEP_REPOSITION,water-powered grain milling,keep grain process and disable lumber process,,do not require Waterworks
+ThingDef,DankPyon_CastleWall,REINTERPRET_RETEXTURE,築地塀・練塀-class high compound wall,patch label graphic material/cost while preserving Def,8919,validate all StructureLayoutDef/SymbolDef generation
+ThingDef,DankPyon_CastleWallEmbrasures,REINTERPRET_RETEXTURE,defensive wall with openings,preserve firing-wall role; exact Japanese opening label pending,346,validate settlement generation and firing behavior
+ThingDef,DankPyon_TudorWall,REINTERPRET_RETEXTURE,wood-and-earth 土壁 construction,keep wood+clay semantics,1,remove Tudor presentation
+ThingDef,DankPyon_RTrench,HIDE,,hide player build path,1,do not relabel as 堀 or 空堀
+ThingDef,DankPyon_RusticDoor,REINTERPRET_RETEXTURE,wooden door,keep mechanics,920,validate generated layouts
+ThingDef,DankPyon_LogGate,REINTERPRET_RETEXTURE,simple timber gate,keep mechanics,7,validate generated layouts
+ThingDef,DankPyon_Gate,REINTERPRET_RETEXTURE,reinforced timber gate,keep mechanics,75,validate generated layouts
+ThingDef,DankPyon_ReinfocedLogGate,REINTERPRET_RETEXTURE,strong timber gate,keep mechanics and reconsider research placement,129,validate generated layouts
+ThingDef,DankPyon_SlabDoor,HIDE,,replace generated uses with retained door/gate,78,patch StructureLayoutDef/SymbolDef before hiding
+ThingDef,DankPyon_RusticChest,KEEP_RETEXTURE,櫃-class wooden chest,keep storage mechanics,19,
+ThingDef,DankPyon_RoyalChest,REINTERPRET_RETEXTURE,decorated 唐櫃-class chest,keep storage mechanics,2,
+ThingDef,DankPyon_RusticCloset,REINTERPRET_RETEXTURE,clothing chest/shelf/cabinet,keep apparel storage and facility behavior,95,validate generated layouts
+ThingDef,DankPyon_RoyalCloset,REINTERPRET_RETEXTURE,厨子-class elite room furnishing,keep bed-comfort facility and rewrite misleading storage description,24,validate generated layouts
+ThingDef,DankPyon_RoyalBookshelf,REINTERPRET_RETEXTURE,elite document/book shelf or 厨子棚,keep research support,21,validate generated layouts
+ThingDef,DankPyon_RoyalArmchair,REINTERPRET_RETEXTURE,formal high-status seat,keep seating only if geometry remains honest,47,do not force 円座 label if pawn sits at chair height
+ThingDef,DankPyon_RoyalThrone,REINTERPRET_RETEXTURE,御座/formal authority seat,patch Royalty-facing presentation,4,verify Royalty integration
+ThingDef,DankPyon_RoyalTable2x2c,REINTERPRET_RETEXTURE,high-status dining/meeting surface,keep gather/table mechanics,15,validate generated layouts
+ThingDef,DankPyon_RoyalTable2x4c,CONDITIONAL_REINTERPRET,large high-status meeting surface,hide or replace if banquet-table geometry remains misleading,4,patch generation if hidden
+ThingDef,DankPyon_RoyalEndTable,REINTERPRET_RETEXTURE,small elite room support furnishing,keep bed-comfort facility,31,do not mislabel exact historical object
+ThingDef,DankPyon_RoyalDresser,REINTERPRET_RETEXTURE,棚・厨子-class room furnishing,keep bed-comfort facility,27,validate generated layouts
+ThingDef,DankPyon_RoyalTudorBed,REINTERPRET_RETEXTURE,high-status Japanese sleeping arrangement,keep bed mechanics; audit strong rest/immunity stats,30,validate generated layouts and avoid literal Tudor bed
+ThingDef,Dankpyon_CupAndDice,REINTERPRET_RETEXTURE,双六-class small game,keep cerebral joy,2,
+ThingDef,DankPyon_Tarocco,REINTERPRET_RETEXTURE,囲碁-class board game,keep cerebral joy if seating geometry fits,2,
+ThingDef,DankPyon_RimWar,HIDE,,hide redundant Western war-game table,2,preserve upstream Def
+ThingDef,DankPyon_IceCellar,REINTERPRET_RETEXTURE,氷室,keep ice storage role,1,
+ThingDef,DankPyon_IceBlock_Maker,CONDITIONAL_KEEP,winter ice preparation abstraction,keep only as support for 氷室 loop,1,do not claim historical ice-mold device
+ThingDef,DankPyon_IceChest,HIDE,,hide active room-freezer mechanic,1,do not substitute for 氷室
+ThingDef,DankPyon_RusticCookingTools,REINTERPRET_RETEXTURE,cooking utensil/tool stand,keep +6% cooking facility role,101,validate generated layouts
+ThingDef,DankPyon_TableBaking,HIDE_BASELINE_LATE_CONDITIONAL,Nanban-era baking support if retained,hide baseline; tie to late oven branch,28,patch generated layouts when hidden
+ThingDef,DankPyon_MendingBench,KEEP_RETEXTURE,generic repair bench,keep MO repair system,5,does not absorb future Repair/Reuse owner
+ThingDef,DankPyon_Apiary,CONDITIONAL_REINTERPRET,rare/specialized old-style beekeeping,move out of generic RusticFurniture progression,6,do not imply Edo-scale established apiary
+ThingDef,DankPyon_Kiln,CONDITIONAL_REUSE,kiln as generic fired-clay equipment,disable current clay-block Western-floor process unless a valid owner/output exists,2,do not preserve decorative floor ecosystem to justify kiln
+ThingDef,DankPyon_Crossbow,REINTERPRET_RETEXTURE,弩,keep current handheld role,,projectile 16 range 25.9
+ThingDef,DankPyon_CrossbowHeavy,REINTERPRET_RETEXTURE,強弩,keep slower harder-hitting handheld role,,projectile 21 AP .25 range 28.9 cooldown 3
+ThingDef,DankPyon_Turret_Scorpio,REINTERPRET_RETEXTURE,small installed 弩,keep fixed defensive role,,1x1 projectile 22 AP .25 range 28.9
+ThingDef,DankPyon_Turret_Ballista,CONDITIONAL_REINTERPRET,large installed 弩 candidate,keep only if 2x2 scale/range45/damage40 remains credible,,historical installed-crossbow category alone does not prove exact MO scale
+ThingDef,DankPyon_Turret_Trebuchet,HIDE,,hide domestic research/build path,,foreign siege encounter does not justify standard Japanese progression
+ThingDef,DankPyon_Turret_RepeaterBallista,HIDE,,hide normal path,,no supported standard Japanese branch
+ThingDef,DankPyon_Handgonne,MECHANICS_PATCH_OR_HIDE,火縄銃 candidate,do not retexture-only; current 3-shot range12.9 Verb must become truthful single-shot firearm or be hidden,,late-Sengoku firearm branch
+ThingDef,DankPyon_MeleeWeapon_ArmingSword,REINTERPRET_CANDIDATE,太刀-class ordinary military sword,retain candidate combat slot,,Cut19.25 cooldown2.15 AP.20
+ThingDef,DankPyon_MeleeWeapon_Falchion,CONDITIONAL_REINTERPRET,lighter/common Japanese sword slot candidate,retain only if distinct from ArmingSword after progression rewrite,,Cut18 cooldown2.1 AP.20
+ThingDef,DankPyon_MeleeWeapon_FencingSword,HIDE,,hide Western specialist sword,,no need to invent Japanese equivalent
+ThingDef,DankPyon_MeleeWeapon_NobleSword,HIDE_CONSOLIDATE,,use normal quality system for craftsmanship premium,,avoid redundant social-tier weapon
+ThingDef,DankPyon_MeleeWeapon_Longsword,CONDITIONAL_REINTERPRET,long-blade slot candidate,retain only if distinct Japanese role is selected,,Cut26 cooldown2.79 AP.25
+ThingDef,DankPyon_MeleeWeapon_Greatsword,REINTERPRET_CANDIDATE,大太刀-class oversized blade,keep extended-range heavy blade role,,Cut31.25 cooldown3.15 AP.25 range2.84
+ThingDef,DankPyon_MeleeWeapon_ButcherCleaver,KEEP_RETEXTURE,butchery blade/tool,keep butchery bonuses,,+10% efficiency +25% speed
+ThingDef,DankPyon_MeleeWeapon_Hatchet,KEEP_RETEXTURE,手斧-class chopping tool,keep plant bonuses,,+15.5% yield/work
+ThingDef,DankPyon_MeleeWeapon_Handaxe,CONDITIONAL_REINTERPRET,鉈-like vegetation tool candidate,keep only if historical label/graphic is honest,,+15% yield +25% plant work
+ThingDef,DankPyon_MeleeWeapon_WoodcuttersAxe,KEEP_RETEXTURE,woodcutting axe,keep plant/wood tool role,,+20% yield +30% plant work
+ThingDef,DankPyon_MeleeWeapon_FightingAxe,HIDE,,hide redundant Western combat axe,,
+ThingDef,DankPyon_MeleeWeapon_Bardiche,HIDE,,hide Western combat axe,,
+ThingDef,DankPyon_MeleeWeapon_Greataxe,HIDE,,hide Western combat axe,,
+ThingDef,DankPyon_MeleeWeapon_Longaxe,REINTERPRET_CANDIDATE,薙刀-class long cutting weapon,relocate research/retexture; preserve range if mapping finalized,,Cut27.5 AP.40 range2.84
+ThingDef,DankPyon_MeleeWeapon_MilitiaSpear,REINTERPRET_CANDIDATE,basic spear/手鉾・槍-class slot,retain low-cost stabbing role,,Stab16.2 cooldown2 AP.25
+ThingDef,DankPyon_MeleeWeapon_FightingSpear,REINTERPRET_CANDIDATE,standard military 槍,relocate out of Noble tier,,Stab18.8 cooldown2.2 AP.25
+ThingDef,DankPyon_MeleeWeapon_Pike,MECHANICS_PATCH_OR_HIDE,長槍 candidate,add meaningful reach if using long-spear referent; otherwise hide/consolidate,,current XML lacks extended melee range
+ThingDef,DankPyon_MeleeWeapon_Swordlance,HIDE_CONSOLIDATE,,hide if Longaxe carries 薙刀 role,,Cut25.45 AP.30
+ThingDef,DankPyon_MeleeWeapon_Halberd,HIDE,,hide Western redundant polearm,,Cut27 AP.30
+ThingDef,DankPyon_MeleeWeapon_BlacksmithHammer,KEEP_RETEXTURE,blacksmith hammer,keep labor tool bonus,,+25% GeneralLaborSpeed
+ThingDef,DankPyon_MeleeWeapon_Pickaxe,KEEP_RETEXTURE,mining pick,keep mining tool bonuses,,+25% MiningSpeed +20% MiningYield
+ThingDef,DankPyon_MeleeWeapon_TwoHandedMallet,KEEP_RETEXTURE,large construction mallet,keep labor/construction tool role,,construction/general labor bonuses
+ThingDef,DankPyon_MeleeWeapon_Bludgeon,REINTERPRET_CANDIDATE,generic club/staff blunt slot,keep only if useful,,Blunt15.7 cooldown2
+ThingDef,DankPyon_MeleeWeapon_MorningStar,HIDE,,hide Western mace form,,
+ThingDef,DankPyon_MeleeWeapon_WingedMace,HIDE,,hide Western mace form,,
+ThingDef,DankPyon_MeleeWeapon_Goedendag,HIDE,,hide Western weapon form,,
+ThingDef,DankPyon_MeleeWeapon_Warhammer,HIDE,,hide Western dedicated warhammer,,
+ThingDef,DankPyon_MeleeWeapon_Polehammer,HIDE,,hide Western polehammer,,
+ThingDef,DankPyon_MeleeWeapon_TwoHandedMace,PENDING_HISTORY,鉄棒・金砕棒-class candidate only if evidence/gameplay supports,do not finalize from visual similarity alone,,
+ThingDef,DankPyon_MeleeWeapon_TwoHandedFlangedMace,PENDING_HISTORY,鉄棒・金砕棒-class candidate only if evidence/gameplay supports,do not finalize from visual similarity alone,,Blunt28 cooldown3

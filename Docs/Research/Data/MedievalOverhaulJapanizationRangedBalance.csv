@@ -1,0 +1,7 @@
+profile,def_or_candidate,role,damage_per_projectile,burst_count,alpha_damage,armor_penetration,stopping_power,range,warmup_seconds,cooldown_seconds,cycle_seconds,raw_damage_per_second,accuracy_touch,accuracy_short,accuracy_medium,accuracy_long,notes
+MO-1.6.2.2,DankPyon_Bow_Hunting,Hunting Bow,16,1,16,,1,27.9,1.75,1.6,3.35,4.776,0.69,0.81,0.70,0.40,"Current MO source"
+MO-1.6.2.2,Bow_War,War Bow / 和弓 carrier,21,1,21,0.25,1.8,31,2.2,1.45,3.65,5.753,0.60,0.89,0.79,0.60,"Current MO source"
+MO-1.6.2.2,DankPyon_Crossbow,弩 carrier,16,1,16,,,25.9,1.35,2,3.35,4.776,0.86,0.85,0.67,0.38,"Current MO source; projectile AP inherits/unspecified in direct Def"
+MO-1.6.2.2,DankPyon_CrossbowHeavy,強弩 carrier,21,1,21,0.25,2,28.9,1.35,3,4.35,4.828,0.86,0.90,0.76,0.54,"Current MO source"
+MO-1.6.2.2,DankPyon_Handgonne,current upstream handgonne,15,3,45,0.10,3,12.9,1.35,10,11.35,3.965,0.87,0.83,0.73,0.61,"Current MO source; 3-shot one-tick-spacing burst is not a truthful matchlock"
+AMJ-prototype-A,DankPyon_Handgonne,火縄銃 prototype A,30,1,30,0.35,3,28,2.25,5.5,7.75,3.871,0.75,0.78,0.60,0.35,"Test target: preserve roughly current sustained output while converting burst damage into slower single-shot alpha/AP; remove ShootingAccuracyPawn +2"
