@@ -75,6 +75,23 @@ The static XML scan in this work session parsed **389 MO 1.6 XML files with 0 pa
 
 Supply ledger / acceptance tests must now distinguish **surface, deep, Mine Shaft, external Mines, imports, sand iron, recovered/quest material**. Do not impose a numerical reduction of mineable scatter, deepCommonality or trade ranges before measuring loaded quantities, and do not patch the MetalChain setting behind the user's back.
 
+## Executable source inventory (2026-10-08)
+
+Reusable static tool: `Tools/audit_mo_iron_supply.py`; fixture-based tests: `Tests/test_iron_supply_audit.py`.
+
+```bash
+python -m unittest discover -s Tests -p test_iron_supply_audit.py -v
+python Tools/audit_mo_iron_supply.py /path/to/3219596926.zip --output /tmp/mo-iron-baseline.json
+python Tools/audit_mo_iron_supply.py /path/to/3219596926.zip --include-optional Mines --output /tmp/mo-iron-mines.json
+python Tools/audit_mo_iron_supply.py /path/to/3219596926.zip --vanilla-core /path/to/RimWorld/Data/Core --output /tmp/mo-iron-with-vanilla.json
+```
+
+The tool reads archive or extracted XML and **does not apply RimWorld PatchOperations, resolve all inheritance, or generate actual trader stock**. The basic profile intentionally excludes every conditional `1.6/Mods/*` folder; `--include-optional FOLDER` selects one explicitly. On the author-supplied 1.6 archive: **321 baseline XMLs / 322 with optional Mines, parse errors 0 in each**. The earlier 389 XML scan included 68 optional XMLs unconditionally and **must not** be mistaken for one active load profile. Four fixture tests passed locally before committing this version.
+
+The tool also extracts `butcherProducts` declarations. MO's `DankPyon_IronOre` source contains `<butcherProducts><DankPyon_IronIngot>1</DankPyon_IronIngot></butcherProducts>`; this is a **declared metadata path only**, not proof that a playable butcher/table Recipe converts ore directly to ingots. Test actual consumption/Recipe exposure rather than claiming an exploit from the XML field alone.
+
+**Next gate:** obtain installed Vanilla Core 1.6 trader XML and then loaded Def/StockGenerator samples from the actual active Mod configuration. Source-only tests must never claim runtime coverage.
+
 ## Pending loaded tests
 
 1. Read actual installed RimWorld 1.6 Core trader XML for **Steel**; inspect all trader classes, category paths, and sell/buy generators. Do not copy numerical amounts from modded/older logs.
