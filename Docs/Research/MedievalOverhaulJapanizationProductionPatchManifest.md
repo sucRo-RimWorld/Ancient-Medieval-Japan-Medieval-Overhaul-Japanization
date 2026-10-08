@@ -220,6 +220,12 @@ MO trader audit targets (conditional on Ironmaking):
 - `DankPyon_Caravan_Medieval_BulkGoodsMerchant_Soren` — IronIngot 200~350, separate ore/Coal **buy-only** stock generators.
 Test actual loaded inventory and `MOSetting_MetalChain` ON/OFF before choosing numeric changes. Imports must remain possible before local smelting research.
 
+**Additional mineables / fuel-input gates:**
+- `vanillaMine` OFF suppresses `MineableSteel` scatter and removes it from `PreciousLump`; ON does not apply the same suppression. Test `metalChain` × `vanillaMine` as a 2×2 and verify final mineables/ore/ingot outputs, not just the patch XML.
+- MO loads `1.6/Mods/Mines` if `wexman.mines` is active; this external `Excavate_Steel` route is patched to `DankPyon_IronOre` x10. Test this optional route separately before claiming all extraction is balanced.
+- `woodChain` ON adds `DankPyon_RawWood` 250~400 to four *Vanilla* caravan/visitor trader kinds; assess as a fuel-input market risk, **not** as an IronIngot seller.
+- Fuel changes are paired representative cases before expanding full cross-product profile coverage. Record player-configured settings without silently flipping them.
+
 **Static-to-runtime gate:** with metalChain OFF, MO mineables and Mine Shaft output IronIngot directly; reducing IronOre supply alone is ineffective. Check broad `ResourcesRaw` trader stock, the nested `DankPyon_RawOres` category, actual use of the source-only Soren TraderKind, seller-vs-buyer generators and installed Vanilla/third-party traders. ON is the reference economic-balance profile; OFF is a compatibility-only scarcity exception and must not be silently changed. No numerical trader patch before observed loaded stock. Detailed evidence: `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
 
 Does not own Japanese smelting/furnace content, ordinary sand-iron trade, or broad world/Trader filtering.
