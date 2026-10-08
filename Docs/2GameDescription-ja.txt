@@ -1,0 +1,20 @@
+Medieval Overhaulを江戸以前の日本に合わせて再構成するModの開発候補。
+
+▼ 予定機能
+・研究前提・解禁要素の日本向け再構成
+・装備・建築・生産・素材・レシピの監査・調整
+・MOが所有する表示資産・生成要素の日本化
+
+▼ 必須・互換性
+・RimWorld 1.6向け
+・Medieval Overhaul必須
+・ほかのAMJ Modは原則任意
+・全機能は未実装、他Modとの互換は未保証
+
+▼ セーブ互換性
+・既存セーブへの追加・削除・移行は未検証
+
+▼ 公開状況
+・設計と初期実装の段階。公開準備未完了
+
+詳細：https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Medieval-Overhaul-Japanization
