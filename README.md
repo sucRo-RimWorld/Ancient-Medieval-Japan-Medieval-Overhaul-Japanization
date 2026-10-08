@@ -1,4 +1,4 @@
-# Ancient & Medieval Japan - Medieval Overhaul Japanization（古代・中世日本 - Medieval Overhaul日本化）
+# Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化）
 
 Official **Ancient & Medieval Japan (AMJ)** integration layer for **Medieval Overhaul**.
 

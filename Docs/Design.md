@@ -1,20 +1,20 @@
-> **Authority:** This repository is now the authoritative owner of Ancient & Medieval Japan - Medieval Overhaul Japanization（古代・中世日本 - Medieval Overhaul日本化）. Project-level copies are migration history only and must not evolve independently.
+> **Authority:** This repository is now the authoritative owner of Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化）. Project-level copies are migration history only and must not evolve independently.
 
-# Ancient & Medieval Japan - Medieval Overhaul Japanization（古代・中世日本 - Medieval Overhaul日本化） — Design
+# Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化） — Design
 
 **Status:** dedicated owner repository active; initial implementation planning (Project pre-split history migrated here).
 
 The concept is defined, but there is no dedicated owner repository yet. Project owns the evolving pre-split design.
 
-#### Ancient & Medieval Japan - Medieval Overhaul Japanization（古代・中世日本 - Medieval Overhaul日本化） / MO日本化レイヤー
+#### Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化） / MO日本化レイヤー
 
-旧 `Japan Only` 方針は置き換え、正式名を **`Ancient & Medieval Japan - Medieval Overhaul Japanization（古代・中世日本 - Medieval Overhaul日本化）`** とする。
+旧 `Japan Only` 方針は置き換え、正式名を **`Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化）`** とする。
 
 本Modは**Medieval Overhaulを必須前提とする、MO Patch + MO Retextureの公式AMJ統合レイヤー**である。単に西洋要素を削除するのではなく、MOが持つ中世の素材・加工段階・設備・生産システムを可能な限り再利用しながら、研究進行・名称/説明・Recipe/素材接続・表示資産を古代～中世日本として一貫するよう再構成する。
 
 基本構成:
 - MOなしで遊べる各AMJ Modは、従来どおり独立した主要ゲームループを持つ
-- MOを利用する日本化構成: `RimWorld + Medieval Overhaul + Ancient & Medieval Japan - Medieval Overhaul Japanization（古代・中世日本 - Medieval Overhaul日本化） + 任意のAMJ Mod`
+- MOを利用する日本化構成: `RimWorld + Medieval Overhaul + Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化） + 任意のAMJ Mod`
 - JapanizationはMOを必須依存とするが、Grains / Rice Cultivation / Waterworks / Hot Springs / Ironmaking等からJapanizationを必須依存にはしない
 - **World Tech Levelは、中世を越えるVanilla/他Mod要素をTech Levelで制限するための強い推奨Mod**とする。JapanizationはWorld Tech Levelの包括的制限機能を再実装せず、World Tech Level自体もJapanizationの必須依存にはしない
 - MO本体のpackageId・既存Defを可能な限り維持し、MO互換Modとの接続を壊さずにPatchする
@@ -143,7 +143,7 @@ MO集落のPeasant/Guardが現在強制しているPadded Surcoat、Leather Tuni
 
 ### 2.10 MOの研究フローを古代～中世日本史へ再構成する
 
-Medieval Overhaulの研究順は西欧中世を主軸にしたゲーム的抽象化であり、Japanization導入時にはその順序を日本側の技術史へそのまま従属させない。**`Ancient & Medieval Japan - Medieval Overhaul Japanization（古代・中世日本 - Medieval Overhaul日本化）` がMO全体の研究フロー再構成を所有する。**
+Medieval Overhaulの研究順は西欧中世を主軸にしたゲーム的抽象化であり、Japanization導入時にはその順序を日本側の技術史へそのまま従属させない。**`Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化）` がMO全体の研究フロー再構成を所有する。**
 
 基本原則:
 - AMJの対象は古代～中世であり、江戸・近世の完成形を標準研究Tierへ持ち込まない

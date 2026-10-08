@@ -1,6 +1,6 @@
-# Ancient & Medieval Japan - Medieval Overhaul Japanization（古代・中世日本 - Medieval Overhaul日本化） Agent Instructions
+# Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化） Agent Instructions
 
-This repository is the authoritative design and implementation owner for **Ancient & Medieval Japan - Medieval Overhaul Japanization（古代・中世日本 - Medieval Overhaul日本化）**.
+This repository is the authoritative design and implementation owner for **Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化）**.
 
 Before starting work:
 
