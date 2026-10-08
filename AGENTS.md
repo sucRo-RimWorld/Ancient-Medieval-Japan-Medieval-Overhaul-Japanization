@@ -1,33 +1,19 @@
 # Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化） Agent Instructions
 
-This repository is the authoritative design and implementation owner for **Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化）**.
+## Start here
 
-Before starting work:
+1. Read this file and `main:Docs/Coordination.md`; locate the latest relevant owner/status/evidence, including later corrections. Historical entries are not current approval.
+2. Read Project [AGENTS.md](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/AGENTS.md) and [Docs/SharedRules.md](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/SharedRules.md): apply its stop conditions, then open only the task-relevant canonical procedures.
+3. Read the local specification and affected source/tests below. Shared rules are owned by Project; this file owns only local scope and routing. Missing access or conflicting authority blocks the dependent action, not unrelated safe work.
 
-1. Read this file.
-2. Read the authoritative coordination log at `main:Docs/Coordination.md`.
-3. Read `Docs/Design.md` and the relevant `Docs/Research/` source for the task.
+New features cannot enter implementation before the Project [existing-Mod audit gate](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/Research/ExistingModAudit.md#implementation-entry-gate) covers VE and non-VE alternatives and records why independent implementation is needed. Existing approved behavior is not redesigned by this rule audit.
 
-## Source hierarchy
+## Local task routes and stops
 
-- Confirmed mod design and ownership boundaries -> `Docs/Design.md`.
-- Detailed historical/technical audits -> `Docs/Research/`.
-- Machine-readable decisions and validation inputs -> `Docs/Research/Data/`.
-- Current cross-workstream handoff/status -> `main:Docs/Coordination.md`.
-- Permanent repository operating rules -> `AGENTS.md`.
-- Runtime truth -> committed XML/Patches/Defs/Textures/C# and tests.
-
-Repository sources take precedence over accumulated chat history or memory.
-
-## Coordination
-
-Do not use the user as a messenger between chats, agents, repositories, or workstreams.
-
-If another repository must act, record the request/handoff in that repository's authoritative `main:Docs/Coordination.md`.
-
-`Docs/Coordination.md` is status/handoff only. Confirmed specifications must also be reflected in Design, Research, code/XML, localization, or tests.
-
-The authoritative Coordination file exists only on `main`. Do not create branch-specific copies.
+- Specification: `Docs/Design.md`; historical/technical evidence: `Docs/Research/`; decision ledgers: `Docs/Research/Data/`; static tooling: `Tools/`.
+- Source XML/C# records implementation, not proof of final loaded behavior. Supported runtime profiles must reach ERROR 0 before release claims; follow Project's evidence and test procedure.
+- Preserve MO Def identity where required by compatibility and the independent owners listed below. Inspect the actual final patched Def/state before claiming an integration works.
+- Release metadata: `Tests/validate_add_changenote.py`; it does not establish gameplay or complete payload readiness.
 
 ## Scope
 
@@ -62,19 +48,6 @@ Other AMJ modules own art for their own Defs. Avoid multiple AMJ mods overwritin
 
 A retexture is incomplete until directional variants, masks, stuff/quality states and generated-site use are audited.
 
-## Testing
-
-Prefer automated testing with RimTest Redux and Pickle. Human manual testing is for visual/interaction checks that automation cannot cover.
-
-Before enabling or modifying GitHub Actions:
-- inspect existing workflow triggers;
-- run equivalent static/local checks where possible;
-- do not push a sequence of knowingly failing workflow changes that generates notification spam.
-
-Static validation should use the ledgers under `Docs/Research/Data/` and tooling under `Tools/`.
-
-Runtime supported profiles must reach ERROR 0 before release claims.
-
 ## Compatibility
 
 Hard dependency:
@@ -89,29 +62,3 @@ A standalone AMJ owner remains responsible for its ordinary MO compatibility. Th
 When changing a policy or mapping, audit related research, generation, PawnKinds, recipes/processes, optional integrations and tests before editing one isolated field.
 
 Do not substitute a Japanese label/texture for a mechanically different object merely to preserve upstream content count.
-
-## Reporting GitHub changes
-
-Only report that files were updated when the change was actually committed to GitHub. Always provide actual commit SHA(s).
-
-## World Tech Level recommendation (AMJ common)
-
-**Confirmed:** 2026-10-08 JST.
-
-> AMJとして古代～中世に限定した世界を構成する場合は World Tech Level の Medieval 設定を推奨。
-
-This is a conditional recommendation for assembling an era-limited AMJ world, not a mandatory dependency or a prerequisite for using this individual Mod. Distinguish it from feature-specific compatibility/recommendations when preparing public descriptions. Do not claim that Medieval tech filtering guarantees Japanese historical/cultural suitability or removes every inappropriate event.
-
-Canonical policy: [Project architecture — era-limited world recommendation](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/Architecture.md#era-limited-world-recommendation).
-
-The proposed **Ancient & Medieval Japan - World Rules** remains an uncommitted idea in Project `Docs/Ideas.md`; its ownership, filter scope and relationship/dependency to World Tech Level must be decided separately. Do not add global Incident/Quest/Trader/MapGen filtering to this Mod merely because the recommendation exists.
-
-## Shared rules owner — AMJ Project
-
-Project owns all AMJ-common policy. Before applying a shared rule, read the current [SharedRules index](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/SharedRules.md) and the relevant canonical document there. This repository owns only its Mod-specific specification/procedure; do not develop shared rules in Grains or another runtime Mod.
-
-For AMJ Workshop previews (including text-only image ideas), read Project `Docs/WorkshopCoverStyle.md`, `Docs/GoldenPaths/WorkshopCoverPipeline.md` and `Docs/References/AMJ_WorkshopCover_Manifest.md`, and inspect the actual registered Project reference/base/mask. Present a text composition proposal before generating a new cover. An image-idea request alone does not authorize generation. Never regenerate the common pixels or restore an obsolete cover layout.
-
-## Add Changenote release metadata
-
-Follow the Project `Docs/WorkshopChangenotes.md` canonical version/changelog rule. Keep `About/About.xml` `modVersion`, `About/Manifest.xml` `version` and the current heading in `About/Changelog.txt` identical. Include both in the subscriber payload and run `python Tests/validate_add_changenote.py`. This is author-side publishing tooling, not a player dependency or a completed-release claim.
