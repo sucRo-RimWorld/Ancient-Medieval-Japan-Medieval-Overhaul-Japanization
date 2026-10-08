@@ -24,7 +24,7 @@ its own gameplay loop.
 
 Examples:
 - Grains can reuse MO wheat / flour / Millstone when MO is present;
-- Ironmaking can accept/connect to MO metal/fuel resources where needed;
+- Ironmaking can accept/connect to MO metal/fuel resources where needed and owns ordinary trade exposure for its own sand iron;
 - Rice Cultivation may attach rice-specific drying/processing to suitable MO
   equipment;
 - a future Fermentation/Preservation Mod may attach its own recipes/processes
@@ -43,7 +43,7 @@ Examples:
 - hiding/reinterpreting Western/fantasy MO content;
 - Japanizing MO-owned art/names/descriptions;
 - patching MO PawnKinds/Factions/loadouts;
-- adjusting MO iron-ore/Mine Shaft supply only in
+- adjusting MO iron-ore/Mine Shaft **and MO-owned iron-material trader supply** only in
   `MO + Japanization + Ironmaking`;
 - hiding/rerouting DBH-for-Medieval content whose upstream assumptions become invalid under the historical profile;
 - resolving conflicts caused by Japanization's own research/Def changes.
@@ -90,7 +90,7 @@ This rule prevents Japanization from becoming a mandatory bridge pack.
 | **MO only + Japanization** | n/a | MO research reconstruction, Def/Recipe/Process curation, MO retextures, PawnKind/Faction cleanup | MO only | Japanization must remain useful without any other AMJ Mod |
 | **Grains** | dry-field crops, primary processing, fallback wheat/flour/mill; its ordinary MO compatibility such as MO wheat/flour/Millstone reuse | adapt the Japanized MO research graph so Grains' MO contract still works; do not duplicate Grains recipes | optional | `MO + Grains` must work without Japanization |
 | **Rice Cultivation** | paddy/rice/items/processing; any rice-specific optional use of MO Drying Rack/equipment | only resolve changes caused by Japanized MO research/equipment visibility | optional | rice never becomes a Japanization feature |
-| **Ironmaking** | sand-iron resources, Japanese furnace loop, ironmaking recipes/equipment; ordinary `MO + Ironmaking` compatibility | MO-side research reconnection and **additional** ore/Mine Shaft supply rebalance in `MO + Japanization + Ironmaking` | optional | without Japanization, Ironmaking does not rewrite MO ore supply |
+| **Ironmaking** | sand-iron resources, Japanese furnace loop, ironmaking recipes/equipment and ordinary sand-iron trade; ordinary `MO + Ironmaking` compatibility | MO-side research reconnection and additional MO ore/Mine Shaft/**iron-material trader stock** rebalance in `MO + Japanization + Ironmaking` | optional | without Japanization, Ironmaking leaves MO ore and MO iron trading unchanged; with it, imports complement rather than eclipse domestic production |
 | **Waterworks** | natural freshwater intake + dug open canals; future consumer API only when a real need exists | currently **nothing**; do not connect MO Watermill to Waterworks merely because both involve water | no integration requirement | MO Watermill remains independent; Waterworks owns no water power |
 | **DBH / DBH for Medieval** | DBH owns PipeNet, pumping, storage, hygiene/water consumers; DBH for Medieval owns its C# facilities | Japanize/reroute DBH-for-Medieval research/material/art where it depends on MO; replace hidden Windmill research links | official optional compatibility | DBH canal remains PipeNet/sprinkler system, not Waterworks canal |
 | **Hot Springs** | natural spring generation, bathing/tōji, safety/autonomy rules | only MO/DBH-side conflict/research/art resolution; do not absorb bathing gameplay | optional | remote conveyance remains a Hot Springs/Waterworks boundary, not Japanization |
@@ -133,7 +133,7 @@ This profile intentionally has three different meanings:
 ### `MO + Ironmaking`
 
 - Ironmaking is standalone;
-- MO ore deposits / Mine Shaft are left as MO owns them;
+- MO ore deposits / Mine Shaft and MO-owned iron-material trader stock are left as MO owns them;
 - Ironmaking makes only the minimum compatibility changes required for its
   outputs/fuels/material chain.
 
@@ -142,22 +142,26 @@ This profile intentionally has three different meanings:
 - no sand-iron gameplay is invented;
 - MO's metal research is historically rearranged;
 - fantasy/Alchemy coupling is removed as required;
-- MO iron supply remains usable because Ironmaking is absent.
+- MO iron supply, including imports, remains usable because Ironmaking is absent.
 
 ### `MO + Japanization + Ironmaking`
 
 Japanization may additionally rebalance **MO-owned supply**:
 - surface iron-ore commonality/vein exposure;
 - Mine Shaft research/work/output;
+- MO-owned iron ingot sales stock (settlement and bulk caravan TraderKindDefs) and category-based resale exposure;
 - related MO-side progression.
 
 Goal:
 - sand iron becomes the principal Japanese natural-resource route;
 - MO iron ore remains a secondary route;
-- total available iron does not simply become MO supply + full sand-iron
-  supply;
+- total available iron does not simply become MO mining + MO trade supply + full sand-iron supply;
+- imported iron remains usable before smelting research, but large cheap ingot stocks must not eclipse local smelting;
+- Ironmaking owns ordinary sand-iron trade; no unrelated global trader/faction/quest filtering;
 - Ironmaking itself does not need to patch MO's resource generator merely to
   support its standalone profile.
+
+MO 1.6's source explicitly configures `DankPyon_IronIngot` for settlement traders (500~800), ordinary bulk caravans (100~200), and Soren bulk caravans (200~350). These are **source-declared ranges**, not tested loaded stock. A Soren `StockGenerator_BuyTradeTag` for raw ore is **buy-side**, not evidence that ores are sold. Verify actual trade inventory and sale/buy behavior with metal-chain ON/OFF. Layer B changes must target only the relevant MO-owned iron stock generators.
 
 This is the clearest example of a Layer B patch.
 
