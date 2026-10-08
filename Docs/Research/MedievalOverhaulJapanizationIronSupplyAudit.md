@@ -60,12 +60,27 @@ For an interval `T`, compare `E_local(T)`, `E_traded(T)`, and `E_other(T)` in **
 
 **Acceptance rule:** Only the **metalChain-ON reference profile** is targeted for "sand iron as the principal local smelting raw material" under a Japanized MO environment. With `vanillaMine` ON, direct Vanilla Steel mining may materially change that outcome; report it separately and decide on any Japanization-owned MO-profile-only mineable adjustment **after** player-facing setting semantics and runtime tests. Neither setting may be silently flipped to pass a test. Ironmaking alone must never suppress Vanilla or MO's existing mineables. Global Vanilla/other-Faction Steel traders remain outside Japanization's blanket patch jurisdiction.
 
+## Additional static audit — MO ore and ingot deep-resource candidates
+
+Author-supplied MO archive SHA-256: `6ed379d7c400db43b3af2a9a7fd6203f7f7e99ca1a670d36b0f73fd1adccc9e3`. XML under `1.6/Defs/ThingDefs_Items/Items_Resources.xml` declares **both** iron ore and iron ingots as deep-resource candidates:
+
+| ThingDef | deepCommonality | deepCountPerPortion | deepLumpSizeRange | MarketValue |
+|---|---:|---:|---|---:|
+| `DankPyon_IronOre` | 5 | 45 | 20~30 | 0.4 |
+| `DankPyon_IronIngot` | 5 | 45 | 20~30 | 1.5 |
+
+The `metalChain` toggle source contains no operation modifying either resource's `deepCommonality` or `deepCountPerPortion`. This creates a **possible direct-ingot deep-drilling bypass even in the metalChain-ON balance reference profile**. Source declaration does **not** confirm active deep generation, deep drilling in a Neolithic/Medieval research profile, or actual extractable ingot count; these remain runtime questions.
+
+The static XML scan in this work session parsed **389 MO 1.6 XML files with 0 parse errors**, and identified 6 MO iron/fuel-related trading stock generators: three direct ingot seller generators, one raw resource category seller generator, one `BuyTradeTag(DankPyon_RawOres)` generator and one `BuySingleDef(DankPyon_Coal)` generator. **Buy generators must never be counted as seller inventories**. The category seller is a possible route, not proof that any specific iron item appears on a given visit.
+
+Supply ledger / acceptance tests must now distinguish **surface, deep, Mine Shaft, external Mines, imports, sand iron, recovered/quest material**. Do not impose a numerical reduction of mineable scatter, deepCommonality or trade ranges before measuring loaded quantities, and do not patch the MetalChain setting behind the user's back.
+
 ## Pending loaded tests
 
 1. Read actual installed RimWorld 1.6 Core trader XML for **Steel**; inspect all trader classes, category paths, and sell/buy generators. Do not copy numerical amounts from modded/older logs.
 2. Test `Vanilla + Ironmaking`, `MO + Ironmaking`, `MO + Japanization`, and `MO + Japanization + Ironmaking`. For the integrated MO profile run `metalChain` ON/OFF × `vanillaMine` ON/OFF as a 2×2, with `woodChain` paired representative cases.
 3. Capture actual loaded `TraderKindDef`, Faction, StockGenerator type, item source, sale vs purchase, quantity and price for base, caravan and any relevant orbital/external merchant.
-4. Check `ResourcesRaw` and `DankPyon_RawOres` inclusion, direct ingot deposits and Mine Shaft output, trade restocking and simulated 1–2-year iron purchases/production.
+4. Check `ResourcesRaw` and `DankPyon_RawOres` inclusion, **deep-resource ore and ingot generation/actual mining**, direct ingot surface deposits and Mine Shaft output, trade restocking and simulated 1–2-year iron purchases/production. The deep-ingot path must be tested even with metalChain ON.
 5. Check combined MO + AMJ + user's supported race/Faction Mod profile for new seller paths. Do not globally rewrite unrelated stock generators to force a pass.
 6. Only then choose item-specific stock-range changes and executable automated tests. No runtime changes or exact numeric balance are authorized by this static audit.
 
