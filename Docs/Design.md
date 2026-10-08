@@ -25,6 +25,8 @@ Patch側の責務:
 - MOの素材加工段階（例: 鉱石→インゴット、原皮→革、原料→糸/布、穀物→粉等）は、日本側でも意味が成立するものを積極的に再利用する
 - **Ironmaking併用時のMO鉄資源供給調整を所有する。** Ironmaking自体はMO所有の鉄鉱床・Mine Shaftを変更しない。Japanization + Ironmakingの統合構成では、MOの地表鉄鉱床とMine Shaftの反復鉄鉱石Recipeを同じ供給系として監査し、砂鉄を主要ルート、MO鉄鉱石を副次ルートへ再調整する。鉄鉱石Defや経路を一律削除せず、出現頻度・鉱脈規模・Recipe出力/工数・研究位置等を必要に応じて調整する。正確な数値は実測で決める
 - **Ironmaking未導入時はMO鉄資源経路を実用可能な状態に保つ。** Japanization単独で鉄供給を壊さず、Ironmakingがある場合だけ日本式砂鉄ルートとの全体バランスを取る
+- **MO商人の鉄材販売在庫を同じ総供給量として調整する。** Ironmaking併用時のみ、MO所有TraderKindDefの鉄インゴット/鉄鉱石関連StockGeneratorを対象に、鉱床・Mine Shaftと合わせて供給を再調整する。輸入鉄材自体は国内製鉄開始以前の鍛冶や砂鉄の乏しい土地で必要なため残し、安価な大量・常時供給だけを抑える。具体的なStockGenerator数値・価格はテスト後に決定する
+- **交易の範囲を鉄関連に限定する。** AMJ砂鉄の通常交易はIronmakingが所有し、Japanizationは日本化構成のMO既存商人在庫の追加調整だけを担当する。無関係なVanilla/外部Faction商人・Quest・世界技術の包括フィルタを行わない
 - 日本の対象時代・文化に合わないMO要素は、単純削除だけでなく、同等のゲーム上の役割を保てる場合は名称・説明・Recipe・研究位置・外観を日本向けへ置換する
 - Mithril等、日本の歴史環境として扱わない幻想的・西洋的な進行経路は、他の進行を壊さないことを確認したうえで通常進行から外す
 - MO互換Modが参照する既存Defを不用意に削除せず、非表示化・研究経路変更・Patchによる意味の置換を優先する
@@ -45,7 +47,7 @@ DBH for Medieval公式互換:
 - Hot Springs併用時の入浴・給湯接続は、Hot Springs / Waterworksが所有する機能を尊重し、JapanizationはDBH側研究・既存設備の日本化と競合解決を担当する。詳細正本は `Docs/Research/MedievalOverhaulJapanizationDBHForMedievalMapping.md`
 
 責務に含めないもの:
-- 砂鉄供給・新しい日本製鉄ゲームループ → Ironmaking。MO所有の鉄鉱床・Mine Shaftを日本化構成で再調整する互換責務はJapanization側
+- 砂鉄供給・新しい日本製鉄ゲームループ・砂鉄の通常交易 → Ironmaking。MO所有の鉄鉱床・Mine Shaft・MO鉄材商人在庫を日本化構成で再調整する互換責務はJapanization側
 - 日本の気候・地形・植生 → Japanese Environment
 - 新しい日本史Faction・社会構造・集落機能の追加 → AMJ Factions。MO既存Faction / PawnKindのJapanizationと装備整合はJapanization側
 - 日本固有イベント → AMJ Events
