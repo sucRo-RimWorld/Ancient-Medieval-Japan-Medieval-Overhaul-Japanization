@@ -32,10 +32,38 @@ Other race and Faction mods may introduce their own TraderKindDefs or reuse thos
 - Keep imported ready-to-work metal possible before smelting research; avoid making it an always cheaper limitless substitute for domestic iron. Test quantities, visit frequency, silver constraints, hauling, material conversions and buy/sell arbitrage before fixing rates or prices.
 - Use StockGenerator-class-aware filtering. Do not confuse `BuyTradeTag` / `BuySingleDef` with seller stock. Treat `ResourcesRaw` stock as another source to check; Soren trader is only a possible source until its active use is demonstrated.
 
+## Additional MO 1.6 source paths: Vanilla mineables, optional Mines and fuel import
+
+The source ZIP adds three relevant branches beyond `metalChain` and iron trader stock:
+
+| Source (under `1.6/`) | Verified XML behavior | Scope / testing requirement |
+|---|---|---|
+| `Patches/ToggleOptions/MOSetting_VanillaMineables.xml` | The `vanillaMine` **inactive** branch sets `MineableSteel` and `MineableComponentsIndustrial` scatter commonality to `0` and removes them from `PreciousLump`. Both active and inactive branches add `DankPyon_MineableIron` to `PreciousLump`. | Test the toggle together with `metalChain`; do not assume Vanilla mineable Steel is always absent when MO loads. These are XML operations, not proof of the final generated map. |
+| `LoadFolders.xml` and `Mods/Mines/Patches/Recipes_Mining.xml` | The 1.6 `Mods/Mines` folder is included only if `wexman.mines` is active. Its `Excavate_Steel` recipe's `products` is patched to `DankPyon_IronOre>10`. | Optional **third-party Mines extraction path**, additional to MO Mine Shaft; when loaded, account for the output and `metalChain` interaction instead of claiming every iron source was covered. |
+| `Patches/ToggleOptions/MOSetting_WoodChain.xml` | Its active `woodChain` branch adds `DankPyon_RawWood` 250~400 to `Caravan_Neolithic_BulkGoods`, `Caravan_Outlander_BulkGoods`, `Visitor_Neolithic_Standard`, `Visitor_Outlander_Standard`. | MO already patches four Vanilla trader types, although **this is wood, not metal**. Fuel-input availability may indirectly affect the economics of charcoal ironmaking; do not mistake these as iron seller changes. |
+
+### Supply balance as an auditable system
+
+Measure supply **by time window and conversion to the same usable-metal output**, not by counting unlike items as equivalent. Categories:
+
+- local: mapped `MineableSteel`, `DankPyon_MineableIron`, sand-iron deposits, MO Mine Shaft and optional `wexman.mines`;
+- external: Vanilla/MO/other-Faction sellers, orbital suppliers, trade caravans, sites/quests, starting stock, disassembly and recovered material;
+- conversion: yield, fuel use, construction costs, work and required research for each path.
+
+For an interval `T`, compare `E_local(T)`, `E_traded(T)`, and `E_other(T)` in **usable iron equivalents**, after loss/process restrictions. This is a measurement framework, not a formula for guaranteeing exact historical ratios. A higher raw inventory number is not automatically higher accessible iron supply when money, tech, labor and visits constrain access. Compare local-production alternatives at a fixed representative demand as well as total sources.
+
+**Testing priorities:**
+1. **Core 2x2:** `metalChain` ON/OFF × `vanillaMine` ON/OFF with MO + Japanization + Ironmaking, plus the unchanged MO + Ironmaking comparison. Record actual map ores/Steel, Mine Shaft recipes and usable metal conversion.
+2. **Fuel pair:** `woodChain` ON/OFF on representative metalChain-ON maps. Observe RawWood vendor stock, AMJ/MO coal access, recipe-input price and source availability. Only promote to more exhaustive profile coverage if it changes ironmaking balance.
+3. **Optional Mines profile:** co-load `wexman.mines` to verify `Excavate_Steel` outputs and whether metalChain OFF provides an alternate direct ingot route. The MO source only proves the isolated 1.6 Mines compatibility patch; final runtime products are not yet confirmed.
+4. **Trader profile:** inspect installed Vanilla 1.6 `Data/Core/Defs/TraderKindDefs` (not available in provided files) plus the actually enabled race/Faction traders and MO seller inheritance. Verify *sales* vs *purchases*, `ResourcesRaw` selection and repeated generated stock; the obsolete 1.4/modified-mod XML values are **not** acceptable substitutes for 1.6 observations.
+
+**Acceptance rule:** Only the **metalChain-ON reference profile** is targeted for "sand iron as the principal local smelting raw material" under a Japanized MO environment. With `vanillaMine` ON, direct Vanilla Steel mining may materially change that outcome; report it separately and decide on any Japanization-owned MO-profile-only mineable adjustment **after** player-facing setting semantics and runtime tests. Neither setting may be silently flipped to pass a test. Ironmaking alone must never suppress Vanilla or MO's existing mineables. Global Vanilla/other-Faction Steel traders remain outside Japanization's blanket patch jurisdiction.
+
 ## Pending loaded tests
 
 1. Read actual installed RimWorld 1.6 Core trader XML for **Steel**; inspect all trader classes, category paths, and sell/buy generators. Do not copy numerical amounts from modded/older logs.
-2. Test `Vanilla + Ironmaking`, `MO + Ironmaking`, `MO + Japanization`, and `MO + Japanization + Ironmaking` in both metalChain ON and OFF modes as applicable.
+2. Test `Vanilla + Ironmaking`, `MO + Ironmaking`, `MO + Japanization`, and `MO + Japanization + Ironmaking`. For the integrated MO profile run `metalChain` ON/OFF × `vanillaMine` ON/OFF as a 2×2, with `woodChain` paired representative cases.
 3. Capture actual loaded `TraderKindDef`, Faction, StockGenerator type, item source, sale vs purchase, quantity and price for base, caravan and any relevant orbital/external merchant.
 4. Check `ResourcesRaw` and `DankPyon_RawOres` inclusion, direct ingot deposits and Mine Shaft output, trade restocking and simulated 1–2-year iron purchases/production.
 5. Check combined MO + AMJ + user's supported race/Faction Mod profile for new seller paths. Do not globally rewrite unrelated stock generators to force a pass.
