@@ -551,7 +551,7 @@ Before production XML or texture work:
 6. Separate historical Japanization from balance redesign:
    keep upstream combat stats unless a stat itself prevents a truthful mapping.
 7. Retexture the **complete loaded graphic-state family** of each retained target
-   under `Docs/RetextureImplementationGuidelines.md`.
+   under [Project RetextureImplementationGuidelines](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/RetextureImplementationGuidelines.md).
 
 ## Faction / PawnKind follow-up
 
