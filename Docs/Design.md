@@ -27,6 +27,7 @@ Patch側の責務:
 - **Ironmaking未導入時はMO鉄資源経路を実用可能な状態に保つ。** Japanization単独で鉄供給を壊さず、Ironmakingがある場合だけ日本式砂鉄ルートとの全体バランスを取る
 - **MO商人の鉄材販売在庫を同じ総供給量として調整する。** Ironmaking併用時のみ、MO所有TraderKindDefの鉄インゴット/鉄鉱石関連StockGeneratorを対象に、鉱床・Mine Shaftと合わせて供給を再調整する。輸入鉄材自体は国内製鉄開始以前の鍛冶や砂鉄の乏しい土地で必要なため残し、安価な大量・常時供給だけを抑える。具体的なStockGenerator数値・価格はテスト後に決定する
 - **交易の範囲を鉄関連に限定する。** AMJ砂鉄の通常交易はIronmakingが所有し、Japanizationは日本化構成のMO既存商人在庫の追加調整だけを担当する。無関係なVanilla/外部Faction商人・Quest・世界技術の包括フィルタを行わない
+- **metalChain ONを砂鉄中心の参照バランス**とし、OFFはMOが鉄鉱床/Mine Shaftから鉄インゴットを直接出す互換プロファイルとして別検証する。ユーザーのOFF設定を黙ってONへ強制しない。MOの `ResourcesRaw` カテゴリから鉄原料が販売され得るため、個別インゴットStockGeneratorだけでなく最終在庫を検査する。Vanilla/外部Faction商人のSteel在庫はMO限定Patchで全世界制限しない。監査・残課題は `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`。
 - 日本の対象時代・文化に合わないMO要素は、単純削除だけでなく、同等のゲーム上の役割を保てる場合は名称・説明・Recipe・研究位置・外観を日本向けへ置換する
 - Mithril等、日本の歴史環境として扱わない幻想的・西洋的な進行経路は、他の進行を壊さないことを確認したうえで通常進行から外す
 - MO互換Modが参照する既存Defを不用意に削除せず、非表示化・研究経路変更・Patchによる意味の置換を優先する
