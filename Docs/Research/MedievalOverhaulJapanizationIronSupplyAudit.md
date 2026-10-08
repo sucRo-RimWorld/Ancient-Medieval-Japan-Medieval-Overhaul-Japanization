@@ -113,6 +113,18 @@ When MO `metalChain` is inactive, the toggle also patches the `building/mineable
 
 **Ironmaking ownership:** standalone `MO + Ironmaking` must not silently remove either existing MO route. These conditional high-yield sources belong in the combined iron supply comparison, alongside surface mines, deep resources, Mine Shaft and trade.
 
+## World Tech Level interaction — source-level audit
+
+World Tech Level provides independent Research, Items/trader stock, Mineable Resources, and Map GenStep filters. Its `Sources/WorldTechLevel/Patches/Patch_StockGenerator.cs` clamps `StockGenerator_Category`, `StockGenerator_MiscItems`, and `StockGenerator_Tag` in that specific patch, **not `StockGenerator_SingleDef`**. Thus WTL Medieval filtering cannot be assumed to remove the explicit 500~800 MO IronIngot seller stock; verify loaded inventories before designing optional MO conditional patches.
+
+Vanilla `DeepDrilling` is an Industrial research project. With WTL Medieval and Research filtering ON, the deep-drilling path has lower immediate gameplay relevance, but separate settings, existing saves and other Mods can still change the outcome. Keep the deep ore/ingot candidates in the static audit; avoid reporting them as universally accessible.
+
+Reference:
+- https://github.com/m00nl1ght-dev/WorldTechLevel/blob/main/Sources/WorldTechLevel/Patches/Patch_StockGenerator.cs
+- https://github.com/m00nl1ght-dev/WorldTechLevel/blob/main/Sources/WorldTechLevel/Patches/Patch_GenStep_ScatterLumpsMineable.cs
+- https://github.com/m00nl1ght-dev/WorldTechLevel/blob/main/Sources/WorldTechLevel/Patches/Patch_MapGenerator.cs
+- https://rimworldhub.com/wiki/thing/DeepDrilling?type=ResearchProjectDef
+
 ## Pending loaded tests
 
 1. Read actual installed RimWorld 1.6 Core trader XML for **Steel**; inspect all trader classes, category paths, and sell/buy generators. Do not copy numerical amounts from modded/older logs.

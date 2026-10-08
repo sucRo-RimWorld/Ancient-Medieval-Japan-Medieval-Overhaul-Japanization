@@ -291,6 +291,10 @@ Inputs:
 
 ---
 
+### Optional WTL filtering gate
+
+WTL Medieval with Research/Items/Mineable/Map GenStep filters requires its own representative profile: MO's fixed IronIngot `StockGenerator_SingleDef` is not targeted by WTL's Category/Misc/Tag trader generator clamp. Confirm final iron sellers, sand-iron map generation and research exposure. Vanilla `DeepDrilling` is Industrial and thus is not the first balance priority in a medieval research-filtered world; preserve a separate scenario for prior-research or external deep-drilling accessibility. WTL remains optional.
+
 ## 6. Runtime validation profiles
 
 Minimum:
