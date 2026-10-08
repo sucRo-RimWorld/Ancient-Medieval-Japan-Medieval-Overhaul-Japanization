@@ -226,6 +226,8 @@ Test actual loaded inventory and `MOSetting_MetalChain` ON/OFF before choosing n
 - `woodChain` ON adds `DankPyon_RawWood` 250~400 to four *Vanilla* caravan/visitor trader kinds; assess as a fuel-input market risk, **not** as an IronIngot seller.
 - Fuel changes are paired representative cases before expanding full cross-product profile coverage. Record player-configured settings without silently flipping them.
 
+**Deep-resource gate:** MO 1.6 defines `DankPyon_IronOre` and `DankPyon_IronIngot` with `deepCommonality=5`, `deepCountPerPortion=45`, `deepLumpSizeRange=20~30` for **both** ThingDefs. The metalChain toggle does not explicitly remove these fields. Confirm actual deep-resource generation and mining for both resources under metalChain ON/OFF before declaring sand iron the dominant local raw-material route. A proposed balance patch limited to surface commonality, Mine Shaft and traders is not a complete audit until this bypass is addressed or disproved in a loaded game.
+
 **Static-to-runtime gate:** with metalChain OFF, MO mineables and Mine Shaft output IronIngot directly; reducing IronOre supply alone is ineffective. Check broad `ResourcesRaw` trader stock, the nested `DankPyon_RawOres` category, actual use of the source-only Soren TraderKind, seller-vs-buyer generators and installed Vanilla/third-party traders. ON is the reference economic-balance profile; OFF is a compatibility-only scarcity exception and must not be silently changed. No numerical trader patch before observed loaded stock. Detailed evidence: `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
 
 Does not own Japanese smelting/furnace content, ordinary sand-iron trade, or broad world/Trader filtering.
