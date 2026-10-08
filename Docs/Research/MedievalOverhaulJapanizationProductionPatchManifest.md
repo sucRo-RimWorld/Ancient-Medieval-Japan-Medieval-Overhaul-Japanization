@@ -211,10 +211,16 @@ Condition:
 
 Owns:
 - Japanized MO research connection to Ironmaking;
-- additional MO ore/Mine-Shaft supply rebalance specific to
+- additional MO ore/Mine-Shaft and **MO-owned iron trader stock** rebalance specific to
   `MO + Japanization + Ironmaking`.
 
-Does not own Japanese smelting/furnace content.
+MO trader audit targets (conditional on Ironmaking):
+- `DankPyon_Base_Medieval_Standard` — explicit IronIngot 500~800 and `ResourcesRaw` category;
+- `DankPyon_Caravan_Medieval_BulkGoodsMerchant` — IronIngot 100~200;
+- `DankPyon_Caravan_Medieval_BulkGoodsMerchant_Soren` — IronIngot 200~350, separate ore/Coal **buy-only** stock generators.
+Test actual loaded inventory and `MOSetting_MetalChain` ON/OFF before choosing numeric changes. Imports must remain possible before local smelting research.
+
+Does not own Japanese smelting/furnace content, ordinary sand-iron trade, or broad world/Trader filtering.
 
 ### Future owner integrations
 
@@ -262,7 +268,9 @@ Before runtime testing, CI/static tooling must fail on:
 7. DBH overlay entries depending on hidden `Windmill` or modern `Plumbing`
    in the historical baseline;
 8. a standalone AMJ owner accidentally becoming a baseline Japanization hard
-   dependency.
+   dependency;
+9. an MO trader iron-supply rebalance exposed without Ironmaking or trader stock
+   that bypasses the conditional supply balance via another generator.
 
 Inputs:
 - decision ledger;
