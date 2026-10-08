@@ -220,6 +220,8 @@ MO trader audit targets (conditional on Ironmaking):
 - `DankPyon_Caravan_Medieval_BulkGoodsMerchant_Soren` — IronIngot 200~350, separate ore/Coal **buy-only** stock generators.
 Test actual loaded inventory and `MOSetting_MetalChain` ON/OFF before choosing numeric changes. Imports must remain possible before local smelting research.
 
+**Static-to-runtime gate:** with metalChain OFF, MO mineables and Mine Shaft output IronIngot directly; reducing IronOre supply alone is ineffective. Check broad `ResourcesRaw` trader stock, the nested `DankPyon_RawOres` category, actual use of the source-only Soren TraderKind, seller-vs-buyer generators and installed Vanilla/third-party traders. ON is the reference economic-balance profile; OFF is a compatibility-only scarcity exception and must not be silently changed. No numerical trader patch before observed loaded stock. Detailed evidence: `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
+
 Does not own Japanese smelting/furnace content, ordinary sand-iron trade, or broad world/Trader filtering.
 
 ### Future owner integrations
