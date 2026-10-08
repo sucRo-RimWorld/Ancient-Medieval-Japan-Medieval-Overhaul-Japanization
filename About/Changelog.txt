@@ -1,0 +1,7 @@
+# Ancient-Medieval-Japan-Medieval-Overhaul-Japanization
+# Add Changenote reads the current version block during a supported Workshop upload.
+
+0.1.0-dev - MO Japanization development metadata / MO日本化開発版の更新履歴整備
+- Prepared versioned Workshop changenotes for the dedicated Medieval Overhaul integration layer.
+- Medieval Overhaul日本化Modのバージョン別Workshop更新履歴を用意しました。
+- Development/design status is unchanged; this metadata is not evidence of release readiness. / 開発・設計段階を変更したものではなく、公開準備完了を示すものでもありません。

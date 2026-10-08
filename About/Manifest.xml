@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Manifest>
+  <identifier>AncientMedievalJapanMedievalOverhaulJapanization</identifier>
+  <version>0.1.0-dev</version>
+  <dependencies />
+  <incompatibleWith />
+  <loadBefore />
+  <loadAfter />
+  <manifestUri>https://raw.githubusercontent.com/sucRo-RimWorld/Ancient-Medieval-Japan-Medieval-Overhaul-Japanization/main/About/Manifest.xml</manifestUri>
+  <downloadUri>https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Medieval-Overhaul-Japanization</downloadUri>
+</Manifest>

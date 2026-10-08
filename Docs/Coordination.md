@@ -81,3 +81,10 @@ Confirmed static risk: MO metalChain OFF changes deposits and Mine Shaft to dire
 **Next action:** after Ironmaking package ID/interface exists, test installed Vanilla 1.6 Core and actual MO+AMJ+race/Faction trader inventories (sell/buy separately), with `metalChain` × `vanillaMine` 2×2 cases plus representative `woodChain` and optional Mines profiles. Validate actual StockGenerator outcomes and total ore/ingot/Steel supply before implementing conditional MO trader patches. Do not add a global Vanilla trader filter to Japanization. Durable evidence: `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
 
 **Tooling update (2026-10-08):** static iron supply parser and four fixture tests were added to `Tools/audit_mo_iron_supply.py` / `Tests/test_iron_supply_audit.py`. Baseline MO 1.6 contains 321 audited XMLs (not 389 simultaneously active); optional Mines adds one XML. The tool flags potential ore/ingot deep supplies and Buy-vs-Sell generators; a runtime measurement is still outstanding. See the executable inventory section in `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
+
+### ADD-CHANGENOTE-20261008 — Versioned Workshop update notes
+
+**Owner:** Ancient-Medieval-Japan-Medieval-Overhaul-Japanization packaging/release
+**Status:** SOURCE IMPLEMENTED — dedicated metadata CI pending; gameplay/release gates unchanged
+
+Project `Docs/WorkshopChangenotes.md` now applies here: `About/Manifest.xml`, `About/Changelog.txt` and `About.xml` agree on `0.1.0-dev`. A narrow new workflow checks the metadata and YADA retention without running unowned gameplay tests. These subscriber metadata files have no effect on gameplay, packageId or Mod dependency rules. No Steam publishing or new runtime verification occurred.
