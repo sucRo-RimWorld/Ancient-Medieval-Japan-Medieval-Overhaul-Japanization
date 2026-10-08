@@ -98,6 +98,21 @@ The reusable parser now emits `extraction` rows for declared `ThingDef.building.
 
 The basic MO 1.6 profile exposes **11 declared iron-related extraction entries**, including `DankPyon_MineableIron` with 40 ore output. The Soren TraderKind has no external literal reference in the baseline MO XML. These are static facts, not confirmed game events or active trader frequencies. The additional parser assertions passed the four local fixture tests, while a runtime test remains pending.
 
+## Large MO Golem-rock iron routes (source-level audit)
+
+The ordinary `DankPyon_MineableIron` yields 40 `DankPyon_IronOre`. There are two additional **fantasy-associated** source ThingDefs under `Defs/ThingDefs_Buildings/Buildings_Natural.xml`:
+
+| Source | Declared iron ore output | Route | Restriction |
+|---|---:|---|---|
+| `DankPyon_GolemRock_Iron_MapGen` | 450 | `GenStepDef DankPyon_GolemRock_Iron` (order 1120, `GenStep_ScatterThings`, 0.25~0.5 candidates per 10k cells) | Separate `Patches/Core/Add_MapGenerator.xml` attaches it to `MapCommonBase/genSteps`; contains `CompProperties_PawnSpawnerOnDestroy` |
+| `DankPyon_GolemRock_Iron_Incident` | 1,000 | `IncidentDef DankPyon_GolemImpactor`, keyed in a `golemDict` | `ThreatBig`, `baseChance=0.5`, `minThreatPoints=500`; requires runtime confirmation of actual event/loot access |
+
+When MO `metalChain` is inactive, the toggle also patches the `building/mineableThing` of **both** iron golem rocks to `DankPyon_IronIngot`. They must not be counted as ordinary iron ore-only map mines, nor should their listed yields be assumed safely obtainable without consequences.
+
+**Japanization ownership:** these are existing MO fantasy/generation/incident systems, not Ironmaking-owned sand iron. Audit whether Japanization's historically curated baseline should suppress or disconnect the MapGen and incident while preserving upstream Def identity for compatibility. Treat any suppression together with related golem pawn/faction/generation requirements and the change in total iron supply; do not make a one-field patch that strands incidents or generated maps. This is **a design/implementation gate, not a committed runtime suppression**.
+
+**Ironmaking ownership:** standalone `MO + Ironmaking` must not silently remove either existing MO route. These conditional high-yield sources belong in the combined iron supply comparison, alongside surface mines, deep resources, Mine Shaft and trade.
+
 ## Pending loaded tests
 
 1. Read actual installed RimWorld 1.6 Core trader XML for **Steel**; inspect all trader classes, category paths, and sell/buy generators. Do not copy numerical amounts from modded/older logs.
