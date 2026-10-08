@@ -23,6 +23,8 @@ Adding this development project to an existing save, removing it, or migrating a
 
 Details: [url=https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Medieval-Overhaul-Japanization]GitHub README and design[/url]
 
+[hr][/hr]
+
 [h2]日本語 / Japanese[/h2]
 
 [b]Medieval Overhaulの研究・生産・装備・景観を、江戸以前の日本に合わせて再構成するための開発初期Modです。[/b]
