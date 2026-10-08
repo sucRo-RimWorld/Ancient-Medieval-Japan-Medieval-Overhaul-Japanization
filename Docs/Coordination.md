@@ -65,3 +65,13 @@ First implementation unit:
 **Status:** DONE — current AGENTS and shared-rule references route to Project
 
 Canonical shared rules and Workshop template/tooling now live in Project `Docs/SharedRules.md` and its linked sources. Grains old Markdown paths are migration pointers only. Existing historical coordination entries retain their original commit/path provenance; resolve future work through the new Project index. Mod-specific implementation, tests and accepted content art remain with this repository. No runtime behavior, new preview generation or Steam publication is part of this migration.
+
+## MOJ-IRON-TRADE-001 — Conditional iron trader/source audit
+
+**Requested by:** author (2026-10-08 JST)  
+**Owner:** Japanization optional Ironmaking integration  
+**Status:** OPEN — MO 1.6 static XML audit complete; loaded Vanilla/other-Faction trader and metalChain ON/OFF tests outstanding
+
+Confirmed static risk: MO metalChain OFF changes deposits and Mine Shaft to direct iron ingots, while explicit MO ingot stock and `ResourcesRaw` category sales can bypass locally smelted sand iron. The MO Soren trader's actual active use is unconfirmed. The historic scarcity benchmark applies to metalChain ON; OFF must remain compatible without silently enabling the chain.
+
+**Next action:** after Ironmaking package ID/interface exists, test installed Vanilla 1.6 Core and actual MO+AMJ+race/Faction trader inventories (sell/buy separately) in ON and OFF profiles. Validate actual StockGenerator outcomes and total ore/ingot/Steel supply before implementing conditional MO trader patches. Do not add a global Vanilla trader filter to Japanization. Durable evidence: `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
