@@ -163,6 +163,8 @@ Goal:
 
 MO 1.6's source explicitly configures `DankPyon_IronIngot` for settlement traders (500~800), ordinary bulk caravans (100~200), and Soren bulk caravans (200~350). These are **source-declared ranges**, not tested loaded stock. A Soren `StockGenerator_BuyTradeTag` for raw ore is **buy-side**, not evidence that ores are sold. Verify actual trade inventory and sale/buy behavior with metal-chain ON/OFF. Layer B changes must target only the relevant MO-owned iron stock generators.
 
+**Setting and scope gate:** sand iron as the principal local source is the `metalChain` ON reference balance. OFF switches MO's iron deposits and Mine Shaft ore recipes to direct IronIngot output; it remains a supported compatibility profile without a guaranteed identical scarcity outcome. Do not force ON. The `ResourcesRaw` category can reach IronIngot and the nested RawOres category, so capture actual loaded trader stock, not just explicit SingleDef entries. The source-declared Soren trader has no other direct use reference in the supplied 1.6 MO XML and must not be counted as active supply before runtime validation. Vanilla 1.6 and unrelated Faction/Orbital Steel traders are unverified and outside the conditional MO-only patch. See `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
+
 This is the clearest example of a Layer B patch.
 
 ---
