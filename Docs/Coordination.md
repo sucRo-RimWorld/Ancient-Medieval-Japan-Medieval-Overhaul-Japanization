@@ -59,29 +59,6 @@ First implementation unit:
 - implement target research visibility/prerequisite graph from the authoritative research graph and CSV;
 - do not begin with texture swaps or isolated recipes before graph/unlock ownership is stable.
 
-### DOC-SHARED-RULES-OWNER-001 — Shared rule migration to Project (2026-10-08 JST)
-
-**Owner:** Project common rules / repository routing
-**Status:** DONE — current AGENTS and shared-rule references route to Project
-
-Canonical shared rules and Workshop template/tooling now live in Project `Docs/SharedRules.md` and its linked sources. Grains old Markdown paths are migration pointers only. Existing historical coordination entries retain their original commit/path provenance; resolve future work through the new Project index. Mod-specific implementation, tests and accepted content art remain with this repository. No runtime behavior, new preview generation or Steam publication is part of this migration.
-
-## MOJ-IRON-TRADE-001 — Conditional iron trader/source audit
-
-**Requested by:** author (2026-10-08 JST)  
-**Owner:** Japanization optional Ironmaking integration  
-**Status:** OPEN — MO 1.6 static XML audit complete; loaded Vanilla/other-Faction trader and metalChain ON/OFF tests outstanding
-
-Confirmed static risk: MO metalChain OFF changes deposits and Mine Shaft to direct iron ingots, while explicit MO ingot stock and `ResourcesRaw` category sales can bypass locally smelted sand iron. The MO Soren trader's actual active use is unconfirmed. The historic scarcity benchmark applies to metalChain ON; OFF must remain compatible without silently enabling the chain.
-
-**Additional static findings:** MO's `vanillaMine` OFF branch suppresses Vanilla `MineableSteel`; the ON branch does not. An optional `wexman.mines` Patch redirects `Excavate_Steel` to IronOre, and `woodChain` ON adds RawWood to Vanilla tribe/outlander caravans/visitors. Full iron balance must include these extraction and fuel-cost gates; no evidence yet establishes their final loaded-game supply.
-
-**New finding (2026-10-08):** both `DankPyon_IronOre` and `DankPyon_IronIngot` have deep resource fields (commonality 5, per-portion count 45, lump 20–30) in the supplied MO 1.6 XML; metalChain source does not directly rewrite them. Thus a **potential direct-ingot deep resource route** must be tested in the metalChain ON reference profile as well as OFF. A local standalone XML inventory experiment parsed 389 MO XMLs (0 XML syntax errors) and classified 3 direct ingot sellers + 1 raw category seller + 2 buy-only generators; a loaded-game PASS is not claimed. The durable source audit is `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
-
-**Next action:** after Ironmaking package ID/interface exists, test installed Vanilla 1.6 Core and actual MO+AMJ+race/Faction trader inventories (sell/buy separately), with `metalChain` × `vanillaMine` 2×2 cases plus representative `woodChain` and optional Mines profiles. Validate actual StockGenerator outcomes and total ore/ingot/Steel supply before implementing conditional MO trader patches. Do not add a global Vanilla trader filter to Japanization. Durable evidence: `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
-
-**Tooling update (2026-10-08):** static iron supply parser and four fixture tests were added to `Tools/audit_mo_iron_supply.py` / `Tests/test_iron_supply_audit.py`. Baseline MO 1.6 contains 321 audited XMLs (not 389 simultaneously active); optional Mines adds one XML. The tool flags potential ore/ingot deep supplies and Buy-vs-Sell generators; a runtime measurement is still outstanding. See the executable inventory section in `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
-
 ### ADD-CHANGENOTE-20261008 — Versioned Workshop update notes
 
 **Owner:** Ancient-Medieval-Japan-Medieval-Overhaul-Japanization packaging/release
