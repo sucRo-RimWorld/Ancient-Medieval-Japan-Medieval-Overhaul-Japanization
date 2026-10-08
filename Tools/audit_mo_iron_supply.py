@@ -174,6 +174,47 @@ def _traders(roots: dict[str, ET.Element], category_map: dict[str, dict], resour
     return result
 
 
+def _extraction(roots: dict[str, ET.Element]) -> list[dict]:
+    """Static ThingDef/RecipeDef output; not final loaded game behavior."""
+    rows = []
+    for source, root in roots.items():
+        if "/Defs/" not in source:
+            continue
+        for thing in root.findall("ThingDef"):
+            product = _text(thing, "building/mineableThing")
+            if product in IRON_ITEMS:
+                rows.append({
+                    "kind": "mineable", "def": _text(thing, "defName"),
+                    "output": product, "source": source,
+                    "yield": _text(thing, "building/mineableYield") or None,
+                    "scatter_commonality": _text(thing, "building/mineableScatterCommonality") or None,
+                    "scatter_lump_range": _text(thing, "building/mineableScatterLumpSizeRange") or None,
+                })
+        for recipe in root.findall("RecipeDef"):
+            for prod in recipe.findall("products/*"):
+                if prod.tag in IRON_ITEMS:
+                    rows.append({
+                        "kind": "recipe", "def": _text(recipe, "defName"),
+                        "output": prod.tag, "source": source,
+                        "yield": (prod.text or "").strip() or None,
+                        "work_amount": _text(recipe, "workAmount") or None,
+                    })
+    return rows
+
+
+def _trader_xml_links(roots: dict[str, ET.Element], traders: list[dict]) -> list[dict]:
+    """Exact non-declaration XML references, without C# runtime resolution."""
+    result = []
+    for name in sorted({row["trader"] for row in traders}):
+        links = []
+        for source, root in roots.items():
+            for node in root.iter():
+                if node.tag != "defName" and node.text and node.text.strip() == name:
+                    links.append({"source": source, "field": node.tag})
+        result.append({"trader": name, "xml_links": links, "resolved_active": None})
+    return result
+
+
 def _toggle_patches(roots: dict[str, ET.Element]) -> list[dict]:
     result = []
     for file, root in roots.items():
@@ -248,7 +289,10 @@ def audit(mo: Path, vanilla_core: Path | None = None,
         "parse_errors": errors, "mo_resources": mo_resources,
         "vanilla_resources": vanilla_resources,
         "categories": {x: cats.get(x, {}) for x in ("ResourcesRaw", "DankPyon_RawOres")},
-        "traders": all_traders, "toggle_operations": _toggle_patches(mo_roots),
+        "traders": all_traders,
+        "extraction": _extraction(mo_roots) + _extraction(vanilla_roots),
+        "trader_xml_links": _trader_xml_links(mo_roots, all_traders),
+        "toggle_operations": _toggle_patches(mo_roots),
         "risks": risks,
     }
 

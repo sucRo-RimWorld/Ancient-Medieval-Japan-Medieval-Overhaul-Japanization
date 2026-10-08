@@ -22,6 +22,10 @@ TRADER = '''<Defs><TraderKindDef><defName>MO_Example</defName><stockGenerators>
 <li Class="StockGenerator_BuyTradeTag"><tag>DankPyon_RawOres</tag></li>
 <li Class="StockGenerator_BuySingleDef"><thingDef>DankPyon_Coal</thingDef></li>
 </stockGenerators></TraderKindDef></Defs>'''
+EXTRACTION = '''<Defs>
+<ThingDef><defName>DankPyon_MineableIron</defName><building><mineableThing>DankPyon_IronOre</mineableThing><mineableYield>40</mineableYield><mineableScatterCommonality>1</mineableScatterCommonality><mineableScatterLumpSizeRange>30~40</mineableScatterLumpSizeRange></building></ThingDef>
+<RecipeDef><defName>DankPyon_MakeOre_IronOre</defName><products><DankPyon_IronOre>1</DankPyon_IronOre></products><workAmount>900</workAmount></RecipeDef>
+</Defs>'''
 VANILLA = '''<Defs><TraderKindDef><defName>Base_Neolithic_Standard</defName><stockGenerators>
 <li Class="StockGenerator_SingleDef"><thingDef>Steel</thingDef><countRange>10~20</countRange></li>
 </stockGenerators></TraderKindDef></Defs>'''
@@ -33,6 +37,7 @@ class AuditTests(unittest.TestCase):
             z.writestr("MO/1.6/Defs/ThingDefs_Items/Items_Resources.xml", RESOURCE)
             z.writestr("MO/1.6/Defs/ThingCategoryDefs/ThingCategories.xml", CATEGORY)
             z.writestr("MO/1.6/Defs/TraderKindDefs/TraderKinds_Base_Medieval.xml", TRADER)
+            z.writestr("MO/1.6/Defs/RecipeDefs/Extract.xml", EXTRACTION)
             z.writestr("MO/1.6/Mods/Mines/Patches/Recipes_Mining.xml", "<Patch />")
 
     def test_mo_zip_inventory_with_buy_sell_split(self) -> None:
@@ -60,11 +65,15 @@ class AuditTests(unittest.TestCase):
             self.make_mo(mo)
             baseline = audit(mo)
             with_mines = audit(mo, optional_folders=("Mines",))
-            self.assertEqual(baseline["files_parsed"], 3)
-            self.assertEqual(with_mines["files_parsed"], 4)
+            self.assertEqual(baseline["files_parsed"], 4)
+            self.assertEqual(with_mines["files_parsed"], 5)
             self.assertEqual(with_mines["optional_folders"], ["Mines"])
             ore = next(x for x in baseline["mo_resources"] if x["thing"] == "DankPyon_IronOre")
             self.assertEqual(ore["butcher_products"], {"DankPyon_IronIngot": "1"})
+            extraction = {x["def"]: x for x in d["extraction"]}
+            self.assertEqual(extraction["DankPyon_MineableIron"]["yield"], "40")
+            self.assertEqual(extraction["DankPyon_MakeOre_IronOre"]["work_amount"], "900")
+            self.assertEqual(d["trader_xml_links"][0]["xml_links"], [])
             with self.assertRaises(ValueError):
                 audit(mo, optional_folders=("../Mods",))
 

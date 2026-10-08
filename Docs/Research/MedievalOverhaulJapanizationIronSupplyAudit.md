@@ -92,6 +92,12 @@ The tool also extracts `butcherProducts` declarations. MO's `DankPyon_IronOre` s
 
 **Next gate:** obtain installed Vanilla Core 1.6 trader XML and then loaded Def/StockGenerator samples from the actual active Mod configuration. Source-only tests must never claim runtime coverage.
 
+## Source-derived extraction and trader-use audit (2026-10-08)
+
+The reusable parser now emits `extraction` rows for declared `ThingDef.building.mineableThing` and `RecipeDef.products`, including original XML path, work and scatter data. It also produces `trader_xml_links` showing literal use sites outside the TraderKind's own declaration. **`resolved_active: null` means XML reference counts cannot establish actual trader generation, including possible C# calls.**
+
+The basic MO 1.6 profile exposes **11 declared iron-related extraction entries**, including `DankPyon_MineableIron` with 40 ore output. The Soren TraderKind has no external literal reference in the baseline MO XML. These are static facts, not confirmed game events or active trader frequencies. The additional parser assertions passed the four local fixture tests, while a runtime test remains pending.
+
 ## Pending loaded tests
 
 1. Read actual installed RimWorld 1.6 Core trader XML for **Steel**; inspect all trader classes, category paths, and sell/buy generators. Do not copy numerical amounts from modded/older logs.
