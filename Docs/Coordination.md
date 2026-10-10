@@ -67,3 +67,10 @@ First implementation unit:
 Project `Docs/WorkshopChangenotes.md` now applies here: `About/Manifest.xml`, `About/Changelog.txt` and `About.xml` agree on `0.1.0-dev`. A narrow new workflow checks the metadata and YADA retention without running unowned gameplay tests. These subscriber metadata files have no effect on gameplay, packageId or Mod dependency rules. No Steam publishing or new runtime verification occurred.
 
 **Additional high-yield MO source (2026-10-08):** static inventory found GolemRock_Iron_MapGen (ore 450) and GolemRock_Iron_Incident (ore 1000), connected respectively to the common MapGenerator and GolemImpactor Incident; metalChain OFF changes their mineable outputs to IronIngot. Japanization must audit the fantasy Golem MapGen/Incident/Faction/Pawn chain and iron supply together. Standalone Ironmaking does not alter upstream MO. No runtime patch or decision to delete the Defs has been made. Durable detail: `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
+
+## MOJ-IRON-CONTRACT-20261010 — Ironmaking identifiers available
+
+**Owner:** Japanization's optional additional MO resource/research overlay.  
+**Status:** INTERFACE RECEIVED; loaded-game validation / production adaptation pending.
+
+Ironmaking's actual owner source was merged through [PR #7](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Ironmaking/pull/7), commit `f458279c2adb072e55858742bb754913fb27f00c`. PackageId is `sucro.ancientmedievaljapan.ironmaking`. Ironmaking owns `AMJ_IronSand`, `AMJ_IronSandDeposit`, `AMJ_Charcoal`, `AMJ_IronBloom`, `AMJ_SmallIronFurnace`, `AMJ_ForgeIronBloom` etc., and its **ordinary** MO compatibility already redirects bloom finishing to `DankPyon_Anvil`→`DankPyon_IronIngot`. Japanization must not implement a duplicate baseline compatibility Patch. Pending is Japanization's optional, Ironmaking-presence-gated MO research and MO-owned mining/Mine Shaft/trader adjustment, after actual load and iron supply measurement. No numeric MO rebalance or loaded-game PASS is claimed. The detailed interface contract lives in `Docs/Research/MedievalOverhaulJapanizationProductionPatchManifest.md` and is not duplicated here.

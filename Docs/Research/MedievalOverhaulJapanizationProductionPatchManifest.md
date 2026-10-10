@@ -214,6 +214,18 @@ Owns:
 - additional MO ore/Mine-Shaft and **MO-owned iron trader stock** rebalance specific to
   `MO + Japanization + Ironmaking`.
 
+**Ironmaking owner interface available (source, NOT loaded-game validated; 2026-10-10):**
+
+- Owner: `sucRo-RimWorld/Ancient-Medieval-Japan-Ironmaking`; actual `About/About.xml` packageId `sucro.ancientmedievaljapan.ironmaking`.
+- Resource/MapGen: `AMJ_IronSand`, `AMJ_IronSandDeposit`, `AMJ_IronmakingMaterials`, `AMJ_ScatterIronSand`.
+- Processing items: `AMJ_Charcoal`, `AMJ_IronBloom`.
+- Worktables and Recipes: `AMJ_CharcoalKiln`, `AMJ_SmallIronFurnace`; `AMJ_BurnCharcoal`, `AMJ_SmeltIronSand`, `AMJ_ForgeIronBloom`.
+- **Baseline standalone MO compatibility is already owned by Ironmaking:** its conditional `Patches/Compatibility/MedievalOverhaul.xml` routes `AMJ_ForgeIronBloom` via `DankPyon_Anvil` to `DankPyon_IronIngot` (not Steel), and accepts `DankPyon_Coal` as a smelting fuel. Japanization must NOT duplicate or unconditionally reapply this patch.
+- **Japanization-only additional contract:** if Ironmaking is loaded, reconcile Japanized MO research prerequisites and balance MO-owned iron deposits/Mine Shaft/deep or golem sources/trader stock. Do not change AMJ IronSand generation or its Vanilla caravan trade in Japanization. `metalChain` ON is a reference balance; OFF is compatibility with its direct-ingot supplies, without forcing user settings.
+- All current yield, price and stock-range values are provisional. No validated loaded Defs/trader or safe numerical rebalance exists. The presence of an actual packageId/DefNames does NOT authorize speculative numerical Patch output.
+
+Canonical source: [Ironmaking owner Design](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Ironmaking/blob/main/Docs/Design.md); source merged [PR #7](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Ironmaking/pull/7), commit `f458279c2adb072e55858742bb754913fb27f00c`.
+
 MO trader audit targets (conditional on Ironmaking):
 - `DankPyon_Base_Medieval_Standard` — explicit IronIngot 500~800 and `ResourcesRaw` category;
 - `DankPyon_Caravan_Medieval_BulkGoodsMerchant` — IronIngot 100~200;
