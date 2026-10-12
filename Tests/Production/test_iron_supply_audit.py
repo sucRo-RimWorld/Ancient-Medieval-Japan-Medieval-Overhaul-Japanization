@@ -8,7 +8,7 @@ from pathlib import Path
 from zipfile import ZipFile
 
 import sys
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "Tools"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "Tools"))
 from audit_mo_iron_supply import audit
 
 RESOURCE = '''<Defs>
