@@ -18,11 +18,11 @@ New features cannot enter implementation before the Project [existing-Mod audit 
 ## Scope
 
 This mod:
-- requires Medieval Overhaul;
+- requires **Medieval Overhaul and the full active AMJ world-suite**; MO-only + Japanization and subsets of the AMJ suite are **not** supported Japanization profiles. The currently existing AMJ world modules are hard dependencies in `About/About.xml`. Pending AMJ world modules enter the mandatory set once their canonical IDs and viable releases exist; do not declare the complete-suite product release-ready before then;
 - is MO Patch + Retexture, not a new AMJ Core;
-- reconstructs MO research, Def/Recipe/Process exposure, equipment, buildings, generation, presentation and selected mechanics around ancient-to-medieval Japan;
+- reconstructs MO research, Def/Recipe/Process exposure, equipment, buildings, generation, presentation and selected mechanics **against AMJ's complete source-of-truth stack**; grain Straw is supplied by Grains threshing, while wild grass yields Hay, not Straw;
 - preserves upstream MO Def identity where compatibility benefits from it;
-- keeps independent AMJ gameplay modules independent and integrates them only through optional compatibility;
+- keeps independent AMJ gameplay Mods **independently usable without Japanization**, while **Japanization itself requires their complete active set**. Do not confuse this one-way dependency with optional partner presence. External third-party DBH/WTL/VE compatibility remains optional;
 - does not treat World Tech Level or another global tech-lock mod as a hard dependency;
 - excludes Edo/early-modern completed systems from the baseline AMJ scope.
 
