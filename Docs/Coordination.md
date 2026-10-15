@@ -23,8 +23,8 @@ Repository:
 
 Confirmed baseline:
 - formal Mod name: `AMJ - Medieval Overhaul Japanization`;
-- hard dependency: Medieval Overhaul;
-- role: MO Patch + MO Retexture;
+- **2026-10-16 author correction supersedes this migration baseline:** dependency is **MO + the entire active AMJ world suite**, not MO-only; current package-identified required entries are Environment, Grains, Scenarios, Waterworks, Ironmaking and Crop Growth Balance. Additional AMJ world modules become mandatory after their actual package ID and viable release exist. Other AMJ Mods remain independent without Japanization. This is a full-suite integration, not a MO-only rescue layer;
+- role: MO Patch + Retexture for the full AMJ world;
 - not a new Core and not the global tech-lock layer;
 - independent AMJ modules stay independent;
 - Project pre-split design has been migrated here; Project now keeps only ownership/roadmap pointers.
@@ -51,7 +51,7 @@ Migration evidence:
 
 Package identity:
 - `sucro.ancientmedievaljapan.medievaloverhauljapanization`
-- hard dependency: `DankPyon.Medieval.Overhaul`
+- **2026-10-16 revised:** hard dependencies in current `About/About.xml` = `DankPyon.Medieval.Overhaul` + six package-identified AMJ world modules; **no MO-only Japanization**. Future AMJ components, including Culture and WFF, are pending ID/payload and must join the required set before any completed-suite release claim. Archived/deprecated and generic CCTO/third-party Mods are not silently required.
 
 No GitHub Actions workflow is enabled yet. Add CI only after the static checks are stable enough to avoid notification spam.
 
@@ -67,6 +67,10 @@ First implementation unit:
 Project `Docs/WorkshopChangenotes.md` now applies here: `About/Manifest.xml`, `About/Changelog.txt` and `About.xml` agree on `0.1.0-dev`. A narrow new workflow checks the metadata and YADA retention without running unowned gameplay tests. These subscriber metadata files have no effect on gameplay, packageId or Mod dependency rules. No Steam publishing or new runtime verification occurred.
 
 **Additional high-yield MO source (2026-10-08):** static inventory found GolemRock_Iron_MapGen (ore 450) and GolemRock_Iron_Incident (ore 1000), connected respectively to the common MapGenerator and GolemImpactor Incident; metalChain OFF changes their mineable outputs to IronIngot. Japanization must audit the fantasy Golem MapGen/Incident/Faction/Pawn chain and iron supply together. Standalone Ironmaking does not alter upstream MO. No runtime patch or decision to delete the Defs has been made. Durable detail: `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`.
+
+## MOJ-FULLSUITE-STRAW-20261016 — Full AMJ requirement and Straw source
+
+**Owner:** Japanization production and Grains already-owned MO threshing. **Status:** SOURCE IMPLEMENTED, STATIC AND NATIVE GATES OPEN. User rejected the mistaken 'MO-only + Japanization with optional AMJ' architecture: Japanization must always run with the full AMJ world suite. `About/About.xml`, `Docs/Design.md` and `Docs/Research/MedievalOverhaulJapanizationIntegrationMatrix.md` now align. Japanization's production `Patches/Production/DisableHayToStraw.xml` suppresses only the small/large MO Drying Rack menu entries for `DankPyon_StrawProcess`; the ProcessDef and other preservation processes remain in place for compatibility. Normal grain Straw supply is Grains' conditional MO threshing output; hay from grass remains direct. Existing saved processors, NPC/world/trade straw availability, final 1.6/1.7 Defs and pre-harvest Straw demand are NOT yet verified. The incomplete future AMJ component set means **no complete-suite release**. Verify static contract and native 1.6 loaded behavior before any release or save migration claim. Project main Coordination receives owner/status routing separately; do not request user handoff.
 
 ## MOJ-IRON-CONTRACT-20261010 — Ironmaking identifiers available
 
