@@ -316,11 +316,11 @@ WTL Medieval with Research/Items/Mineable/Map GenStep filters requires its own r
 ## 6. Runtime validation profiles
 
 Minimum:
-1. MO + Japanization
-2. MO + Japanization + Grains
-3. MO + Japanization + Ironmaking
-4. MO + Japanization + Grains + Ironmaking
-5. MO + Japanization + DBH + DBH for Medieval
+1. **MO + full currently active AMJ world suite + Japanization** (all required `About.xml` IDs).
+2. Same complete suite + optional external DBH + DBH for Medieval when that overlay is implemented.
+3. Dependency-failure checks: removing required Grains / Ironmaking / Environment / other active AMJ world modules must prevent a supported Japanization start.
+4. Both MO Drying Rack sizes do not expose `DankPyon_StrawProcess`; other meat processes remain and original ProcessDef stays defined. Real Grains thresh produces Straw and harvested Hay is unaffected.
+5. 1.6 actual ProcessorFramework, final loaded Def, save/resume of pre-existing in-progress dryer process and 1.7 future payload (currently unsupported) must be separately verified.
 
 For each:
 - final loaded ResearchProjectDef graph;
@@ -330,7 +330,7 @@ For each:
 - settlement/site generation does not leak hidden Western content;
 - ERROR 0.
 
-Additional profiles are added only when a real optional integration exists.
+Additional profiles are added only for meaningful **external** optional integrations; newly established AMJ world modules enlarge the **required** core profile, not create an optional subset.
 
 ---
 
