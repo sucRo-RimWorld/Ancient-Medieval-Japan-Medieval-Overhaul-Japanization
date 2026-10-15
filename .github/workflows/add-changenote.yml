@@ -29,3 +29,4 @@ jobs:
         with:
           python-version: '3.11'
       - run: python Tests/Release/validate_add_changenote.py
+      - run: python -m unittest discover -s Tests/Production -p 'test_full_amj_suite_and_straw.py' -v
