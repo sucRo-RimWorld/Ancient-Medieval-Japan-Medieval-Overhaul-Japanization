@@ -1070,9 +1070,7 @@ These cases sharpen the Japanization reuse rule:
 4. **Prefer historically generic MO infrastructure** (millstone, drying rack,
    water-powered grain milling, basic oil lighting) over culturally specific
    Western bundles.
-5. **Optional AMJ modules remain owners of new gameplay loops.** Japanization
-   may expose/reuse MO machinery conditionally but does not absorb Grains,
-   Preservation, Fermentation, Waterworks or other modules.
+5. **Required AMJ world-suite modules remain independent owners of their own gameplay loops.** Japanization must run with the complete AMJ world set (as final packages become available), but **does not absorb** Grains, Preservation, Fermentation, Waterworks or other owners. External third-party compatibility remains optional. For Straw in particular, Grains' cereal threshing supplies the material; the Japanized MO Drying Rack no longer exposes the Hay→Straw recipe. The original Straw ProcessDef stays available for compatibility.
 
 ## Revised next audit
 

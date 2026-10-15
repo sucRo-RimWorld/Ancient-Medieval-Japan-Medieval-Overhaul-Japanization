@@ -12,15 +12,45 @@
       <packageId>DankPyon.Medieval.Overhaul</packageId>
       <displayName>Medieval Overhaul</displayName>
     </li>
+    <li>
+      <packageId>sucro.ancientmedievaljapan.environment</packageId>
+      <displayName>AMJ - Environment</displayName>
+    </li>
+    <li>
+      <packageId>sucro.ancientmedievaljapan.core</packageId>
+      <displayName>AMJ - Grains</displayName>
+    </li>
+    <li>
+      <packageId>sucro.ancientmedievaljapan.scenarios</packageId>
+      <displayName>AMJ - Scenarios</displayName>
+    </li>
+    <li>
+      <packageId>sucro.ancientmedievaljapan.waterworks</packageId>
+      <displayName>AMJ - Waterworks</displayName>
+    </li>
+    <li>
+      <packageId>sucro.ancientmedievaljapan.ironmaking</packageId>
+      <displayName>AMJ - Ironmaking</displayName>
+    </li>
+    <li>
+      <packageId>sucro.ancientmedievaljapan.cropgrowthbalance</packageId>
+      <displayName>AMJ - Crop Growth Balance</displayName>
+    </li>
   </modDependencies>
   <loadAfter>
     <li>DankPyon.Medieval.Overhaul</li>
+    <li>sucro.ancientmedievaljapan.environment</li>
+    <li>sucro.ancientmedievaljapan.core</li>
+    <li>sucro.ancientmedievaljapan.scenarios</li>
+    <li>sucro.ancientmedievaljapan.waterworks</li>
+    <li>sucro.ancientmedievaljapan.ironmaking</li>
+    <li>sucro.ancientmedievaljapan.cropgrowthbalance</li>
   </loadAfter>
   <description>Development build.
 
 Official Ancient &amp; Medieval Japan integration layer for Medieval Overhaul. Reconstructs Medieval Overhaul research, production, equipment, buildings, generated content, labels and graphics around ancient-to-medieval Japan while preserving useful upstream systems and Def identities where practical.
 
-Medieval Overhaul is required. Other AMJ modules and compatibility targets remain optional unless explicitly documented otherwise.
+This is a full AMJ-suite integration build: Medieval Overhaul and every currently package-identified active AMJ world module are REQUIRED. It does not support MO-only or a subset of AMJ. Future AMJ content modules are added to required dependencies when their final package IDs and production releases are available; no complete-suite release is claimed before then. Independent external compatibility mods remain optional.
 
 Edo / early-modern completed systems are outside the baseline AMJ scope.
 
@@ -28,7 +58,7 @@ Edo / early-modern completed systems are outside the baseline AMJ scope.
 
 Medieval Overhaul向けのAncient &amp; Medieval Japan公式連携Mod。Medieval Overhaulの研究、生産、装備、建築物、生成コンテンツ、表示文言、画像を古代から中世の日本に合わせて再構成し、有用な元の仕組みやDefの識別子は可能な範囲で維持する。
 
-Medieval Overhaulが必須。他のAMJ Modや互換対象は、別途明示されない限り任意。
+本ModはAMJ全体を統合する日本化構成専用。Medieval Overhaulと、現時点でpackageIdが確定した稼働中のAMJ世界構成Modをすべて必須とし、MO単独やAMJ一部のみの構成には対応しない。今後のAMJ本体構成Modは正式なpackageId・配布状態が確定し次第必須依存に追加する。それまでは一式完成・公開可能とは扱わない。独立した外部互換Modは引き続き任意。
 
 江戸時代および近世の完成された技術体系はAMJの基本対象範囲に含めない。</description>
 </ModMetaData>

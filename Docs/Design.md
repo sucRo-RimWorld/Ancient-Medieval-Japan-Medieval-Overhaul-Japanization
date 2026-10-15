@@ -10,12 +10,12 @@ The concept is defined, but there is no dedicated owner repository yet. Project 
 
 旧 `Japan Only` 方針は置き換え、正式名を **`Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化）`** とする。
 
-本Modは**Medieval Overhaulを必須前提とする、MO Patch + MO Retextureの公式AMJ統合レイヤー**である。単に西洋要素を削除するのではなく、MOが持つ中世の素材・加工段階・設備・生産システムを可能な限り再利用しながら、研究進行・名称/説明・Recipe/素材接続・表示資産を古代～中世日本として一貫するよう再構成する。
+本Modは**Medieval OverhaulとAMJの全世界構成Modを必須前提とする、MO Patch + MO Retextureの公式AMJ一式統合レイヤー**である。単に西洋要素を削除するのではなく、MOが持つ中世の素材・加工段階・設備・生産システムを可能な限り再利用しながら、研究進行・名称/説明・Recipe/素材接続・表示資産を古代～中世日本として一貫するよう再構成する。
 
 基本構成:
 - MOなしで遊べる各AMJ Modは、従来どおり独立した主要ゲームループを持つ
-- MOを利用する日本化構成: `RimWorld + Medieval Overhaul + Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化） + 任意のAMJ Mod`
-- JapanizationはMOを必須依存とするが、Grains / Rice Cultivation / Waterworks / Hot Springs / Ironmaking等からJapanizationを必須依存にはしない
+- MOを利用する日本化構成: `RimWorld + Medieval Overhaul + AMJ世界構成の全Mod + Ancient & Medieval Japan - Medieval Overhaul Japanization`。**MO単独＋Japanization／一部AMJ ModだけのJapanization構成は非対応**
+- **依存方向はJapanization → MOおよびAMJ全世界構成Modの一方向**。既存packageIdが確定したEnvironment、Grains、Scenarios、Waterworks、Ironmaking、Crop Growth Balanceは現時点からJapanizationの`About/About.xml`で必須。今後のWild Food Foraging、Culture、Rice Cultivation、Factions、生活道具等はpackageId／本番提供が確定した段階で必須集合へ追加し、それまでは**AMJ一式として完成・公開可能とは扱わない**。各Mod自体はJapanizationなしで引き続き動作する。CCTO／CCTO for VPE等の独立汎用拡張、World Tech Level、DBH、VEなど外部Modはこの『全AMJ』に自動包含しない
 - **World Tech Levelは、中世を越えるVanilla/他Mod要素をTech Levelで制限するための強い推奨Mod**とする。JapanizationはWorld Tech Levelの包括的制限機能を再実装せず、World Tech Level自体もJapanizationの必須依存にはしない
 - MO本体のpackageId・既存Defを可能な限り維持し、MO互換Modとの接続を壊さずにPatchする
 
@@ -23,15 +23,15 @@ Patch側の責務:
 - **MO全体の研究フローを、日本の古代～中世における技術発展とゲーム上の進行へ合わせて再構成する**
 - 研究名・説明・前提関係・Tech Level・解禁設備/Recipeを必要に応じて変更する
 - MOの素材加工段階（例: 鉱石→インゴット、原皮→革、原料→糸/布、穀物→粉等）は、日本側でも意味が成立するものを積極的に再利用する
-- **Ironmaking併用時のMO鉄資源供給調整を所有する。** Ironmaking自体はMO所有の鉄鉱床・Mine Shaftを変更しない。Japanization + Ironmakingの統合構成では、MOの地表鉄鉱床とMine Shaftの反復鉄鉱石Recipeを同じ供給系として監査し、砂鉄を主要ルート、MO鉄鉱石を副次ルートへ再調整する。鉄鉱石Defや経路を一律削除せず、出現頻度・鉱脈規模・Recipe出力/工数・研究位置等を必要に応じて調整する。正確な数値は実測で決める
-- **Ironmaking未導入時はMO鉄資源経路を実用可能な状態に保つ。** Japanization単独で鉄供給を壊さず、Ironmakingがある場合だけ日本式砂鉄ルートとの全体バランスを取る
-- **MO商人の鉄材販売在庫を同じ総供給量として調整する。** Ironmaking併用時のみ、MO所有TraderKindDefの鉄インゴット/鉄鉱石関連StockGeneratorを対象に、鉱床・Mine Shaftと合わせて供給を再調整する。輸入鉄材自体は国内製鉄開始以前の鍛冶や砂鉄の乏しい土地で必要なため残し、安価な大量・常時供給だけを抑える。具体的なStockGenerator数値・価格はテスト後に決定する
+- **必須Ironmakingを前提としたMO鉄資源供給調整を所有する。** Ironmaking自体はMO所有の鉄鉱床・Mine Shaftを変更しない。Japanization + Ironmakingの統合構成では、MOの地表鉄鉱床とMine Shaftの反復鉄鉱石Recipeを同じ供給系として監査し、砂鉄を主要ルート、MO鉄鉱石を副次ルートへ再調整する。鉄鉱石Defや経路を一律削除せず、出現頻度・鉱脈規模・Recipe出力/工数・研究位置等を必要に応じて調整する。正確な数値は実測で決める
+- **JapanizationではIronmaking必須の日本製鉄ルートを前提としてMO鉄供給を調整する。** 従来の『IronmakingなしのJapanization』救済要件は廃止。独立したMO単独／MO＋Ironmakingの動作は、JapanizationでなくMOとIronmaking各所有者が担当する
+- **MO商人の鉄材販売在庫を同じ総供給量として調整する。** 必須Ironmakingとの統合時に、MO所有TraderKindDefの鉄インゴット/鉄鉱石関連StockGeneratorを対象に、鉱床・Mine Shaftと合わせて供給を再調整する。輸入鉄材自体は国内製鉄開始以前の鍛冶や砂鉄の乏しい土地で必要なため残し、安価な大量・常時供給だけを抑える。具体的なStockGenerator数値・価格はテスト後に決定する
 - **交易の範囲を鉄関連に限定する。** AMJ砂鉄の通常交易はIronmakingが所有し、Japanizationは日本化構成のMO既存商人在庫の追加調整だけを担当する。無関係なVanilla/外部Faction商人・Quest・世界技術の包括フィルタを行わない
 - **MOゴーレム岩の鉄資源と幻想要素は別途一体監査する。** `DankPyon_GolemRock_Iron_MapGen`（鉱石450）と `DankPyon_GolemRock_Iron_Incident`（鉱石1000）は、独自GenStep・通常MapGeneratorへの追加Patch・GolemImpactorイベントと接続する。metalChain OFFで産出はIronIngotへ切り替わる。Japanizationの古代～中世日本史プロファイルでは、ゴーレム生成/イベントを保持する歴史的根拠がないため標準露出から切り離す候補として扱うが、PawnKind/Faction/Incident/生成経路・セーブ互換をまとめて確認するまで変更しない。Ironmaking単体でMOの当該経路には介入しない。詳細: `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`。
 - **metalChain ONを砂鉄中心の参照バランス**とし、OFFはMOが鉄鉱床/Mine Shaftから鉄インゴットを直接出す互換プロファイルとして別検証する。ユーザーのOFF設定を黙ってONへ強制しない。MOの `ResourcesRaw` カテゴリから鉄原料が販売され得るため、個別インゴットStockGeneratorだけでなく最終在庫を検査する。Vanilla/外部Faction商人のSteel在庫はMO限定Patchで全世界制限しない。監査・残課題は `Docs/Research/MedievalOverhaulJapanizationIronSupplyAudit.md`。
 - 日本の対象時代・文化に合わないMO要素は、単純削除だけでなく、同等のゲーム上の役割を保てる場合は名称・説明・Recipe・研究位置・外観を日本向けへ置換する
 - Mithril等、日本の歴史環境として扱わない幻想的・西洋的な進行経路は、他の進行を壊さないことを確認したうえで通常進行から外す
-- MO互換Modが参照する既存Defを不用意に削除せず、非表示化・研究経路変更・Patchによる意味の置換を優先する
+- MO互換Modが参照する既存Defを不用意に削除せず、非表示化・研究経路変更・Patchによる意味の置換を優先する。**Straw製造では上流`DankPyon_StrawProcess`を消さず、両乾燥ラックの使用可能プロセスからだけ除外**して既存参照を保存する
 - MOのPawnKind / FactionDefが西欧装備・称号・紋章等を直接要求する場合は、**Japanization側でMO所有の装備表・表示を同時にPatchし、日本化後に西欧装備がNPC生成から再流入しないようにする**。ただし新しい日本史Factionの社会構造・集落・専用機能はAMJ Factionsの責務とする
 
 Retexture側の責務:
@@ -53,11 +53,11 @@ DBH for Medieval公式互換:
 - 日本の気候・地形・植生 → Japanese Environment
 - 新しい日本史Faction・社会構造・集落機能の追加 → AMJ Factions。MO既存Faction / PawnKindのJapanizationと装備整合はJapanization側
 - 日本固有イベント → AMJ Events
-- Backstory追加 → AMJ Backgrounds
+- Backstory／特性／一般の文化的心情／嗜好薬物の再構成 → 統合AMJ Culture（独立Backstory Modの既定計画は廃止）
 - Grains / Rice Cultivation / Waterworks / Hot Springs / 発酵 / 酒造 / 保存等の独立ゲームループそのもの
 - 外部Mod全般を日本要素だけに選別する汎用フィルタ
 
-Japanizationは**「MOを中世日本へ変換する層」**であって、新しいCoreではない。AMJ各Modの独立性を維持したまま、MOを採用する構成だけを深く統合する。
+Japanizationは**「AMJ一式が存在する世界のMOを中世日本へ変換する層」**であって、新しいCoreではない。AMJ各Modの独立性を維持し、**Japanization側だけが全AMJ世界構成を必須依存**にする。MO単独の日本化を成立させるという旧方針を撤回する。
 
 ### 互換Patchの二層所有
 
@@ -83,7 +83,7 @@ MO連携は「MOの建物/研究を残すか消すか」というMod単位・研
 - 各独立AMJ Modが所有するゲームループを、MO設備再利用を理由にJapanizationへ吸収しない
 
 現時点の代表例:
-- **Drying Rack:** 汎用乾燥機構として強い再利用候補
+- **Drying Rack:** 食品などの汎用乾燥機構として再利用。ただし**野草Hayを穀物藁Strawへ『乾燥だけで変える』工程は不採用**。Grainsの既存MO併用脱穀副産物`DankPyon_Straw`を藁供給源とし、`Patches/Production/DisableHayToStraw.xml`で小型・大型乾燥ラックの`DankPyon_StrawProcess`参照のみ除去する。ProcessDef自体と他の肉類等の乾燥工程は消さず、既存セーブで進行中のProcessor状態とTrading／既存配置物は1.6実機未検証。旧MO単独へのStraw供給保障はJapanizationの責務ではない
 - **Millstone:** Bill式WorkTableとしてGrains等との任意接続に向く
 - **Watermill:** 水力と穀物製粉は維持候補だが、MO同梱の2倍製材Processは標準から外す
 - **Smoker:** PF機構は独自性があるが、日本の標準的な古代～中世保存技術としての根拠が弱いため標準非表示

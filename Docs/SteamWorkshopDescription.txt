@@ -12,8 +12,8 @@
 
 This is a targeted [b]Medieval Overhaul patch and retexture layer[/b], not a new AMJ Core or a universal technology-restriction Mod. Edo/early-modern completed systems are outside its baseline scope. The points above describe the project direction and must [b]not[/b] be taken as confirmation that each feature is already playable.
 
-[h2]Dependencies and optional integration[/h2]
-[b]Required: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3219596926]Medieval Overhaul[/url].[/b] RimWorld 1.6 is the development target. Grains, Waterworks, Ironmaking and other AMJ gameplay modules remain independent and are not universal hard dependencies. Optional compatibility with other medieval Mods is planned, not guaranteed.
+[h2]Full AMJ suite dependencies[/h2]
+[b]Required: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3219596926]Medieval Overhaul[/url] AND all current AMJ world modules[/b] — Environment, Grains, Scenarios, Waterworks, Ironmaking, Crop Growth Balance. Japanization does not support MO-only or partial-AMJ profiles. Additional planned AMJ world modules will become required once their real packages exist; until then, the full-suite integration is not release-ready. Independent AMJ Mods themselves do not require Japanization. External compatibility Mods remain optional. RimWorld 1.6 is the current metadata target.
 
 [h2]Save compatibility[/h2]
 Adding this development project to an existing save, removing it, or migrating an ongoing Medieval Overhaul game has [b]not been verified[/b]. Research and production changes could affect existing saves once implemented.
@@ -39,8 +39,8 @@ Details: [url=https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Medieval-
 
 これは[b]Medieval Overhaul専用のパッチ・リテクスチャ層[/b]です。AMJ共通基盤や、すべてのModの技術時代を制限する機能ではありません。江戸期・近世の完成した技術体系も基本対象に含めません。上記は[b]設計・実装予定であり、すべて実装済みという意味ではありません。[/b]
 
-[h2]必須Mod・任意連携[/h2]
-[b]必須：[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3219596926]Medieval Overhaul[/url]。[/b] 開発対象はRimWorld 1.6です。Grains、Waterworks、IronmakingなどのAMJ Modは独立して利用でき、本Modを一律の必須条件とはしません。他の中世系Modとの任意互換も検討中であり、現時点では保証しません。
+[h2]AMJ一式の必須依存[/h2]
+[b]必須：[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3219596926]Medieval Overhaul[/url] と現存のAMJ世界構成Mod一式[/b]（Environment、Grains、Scenarios、Waterworks、Ironmaking、Crop Growth Balance）。MOのみ／AMJの一部のみ＋Japanizationは非対応。今後のAMJ構成Modも正式版完成後に必須化し、それまでは一式の公開準備が完了したとは扱いません。個別AMJ ModはJapanizationなしで動作できます。他の外部中世Modは任意互換であり保証未了。開発対象はRimWorld 1.6です。
 
 [h2]セーブ互換性[/h2]
 開発版の既存セーブへの追加・途中削除、またMedieval Overhaulの進行中セーブからの移行は[b]未検証[/b]です。研究や生産を変更する機能が実装されると、既存セーブへ影響する可能性があります。

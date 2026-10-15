@@ -12,8 +12,14 @@ Early development. Design migration from `Ancient-Medieval-Japan-Project` is in 
 
 Required:
 - Medieval Overhaul
+- AMJ - Environment
+- AMJ - Grains
+- AMJ - Scenarios
+- AMJ - Waterworks
+- AMJ - Ironmaking
+- AMJ - Crop Growth Balance
 
-Optional compatibility is planned for other AMJ modules and selected medieval frameworks. Those modules are not baseline hard dependencies.
+Japanization is an **all-AMJ-suite integration**: MO-only or partial-AMJ Japanization profiles are intentionally unsupported. More AMJ world modules (e.g. Culture, Wild Food Foraging, Rice Cultivation) become required as their real package IDs and playable releases become available; the all-suite product is **not release-ready** before then. Generic CCTO, DBH, World Tech Level, VE and other external Mods are outside this suite requirement and remain independently optional. Each underlying AMJ Mod is usable without Japanization.
 
 ## Design principle
 
@@ -24,7 +30,8 @@ Japanization works at Def / Recipe / Process / research / generation level:
 - hide or disconnect Western/fantasy branches with no honest Japanese counterpart;
 - preserve upstream Def identities where compatibility benefits from doing so;
 - keep independent AMJ gameplay modules independently usable;
-- reconstruct MO's visible progression around ancient-to-medieval Japanese technological history.
+- reconstruct MO's visible progression around ancient-to-medieval Japanese technological history;
+- use Grains grain-threshing straw instead of converting harvested Hay into cereal Straw in drying racks (1.6 source patch; native game verification pending).
 
 Edo / early-modern completed systems are outside the baseline AMJ scope.
 
