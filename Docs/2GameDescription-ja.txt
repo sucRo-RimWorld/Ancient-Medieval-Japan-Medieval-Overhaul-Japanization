@@ -7,8 +7,9 @@ Medieval Overhaulを江戸以前の日本に合わせて再構成するModの開
 
 ▼ 必須・互換性
 ・RimWorld 1.6向け
-・Medieval Overhaul必須
-・ほかのAMJ Modは原則任意
+・Medieval OverhaulおよびAMJ世界構成Mod一式が必須
+・現在の定義済みAMJ: Environment／Grains／Scenarios／Waterworks／Ironmaking／Crop Growth Balance。未完成のAMJ構成Modは正式実装後に必須化
+・MO単独＋Japanizationや一部AMJだけの構成には非対応
 ・全機能は未実装、他Modとの互換は未保証
 
 ▼ セーブ互換性
