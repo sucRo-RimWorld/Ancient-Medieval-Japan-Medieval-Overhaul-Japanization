@@ -305,9 +305,9 @@ become Waterworks.
 
 ---
 
-## 6. Optional AMJ integration edges
+## 6. Required full AMJ integration edges (author revision 2026-10-16)
 
-These are **conditional edges**, not baseline prerequisites.
+**AMJ world-suite modules are Japanization hard dependencies once they have final IDs/payloads.** These remain *independently owned* research contracts, not optionally present pieces of a MO-only Japanization baseline. Additional external DBH/WTL/VE integrations are optional.
 
 ### Grains
 
@@ -320,15 +320,13 @@ These are **conditional edges**, not baseline prerequisites.
 
 - `Smithing` / `DankPyon_Steel` are the MO-side connection points.
 - Ironmaking owns sand iron and Japanese furnace progression.
-- Additional MO ore/Mine-Shaft rebalance exists only in
-  `MO + Japanization + Ironmaking`.
+- Additional MO ore/Mine-Shaft rebalance exists only in the **full AMJ world suite + MO + Japanization** profile (Ironmaking is mandatory there).
 
 ### Rice / Preservation / Fermentation / Brewing
 
 - each owner keeps its own gameplay/research;
-- Japanization only adapts retained MO equipment/research visibility where the
-  owner has an optional compatibility path;
-- no independent owner becomes a prerequisite of Japanization.
+- Japanization adapts retained MO equipment/research visibility around these owners when their actual world-suite components are added as required dependencies;
+- new owners' own gameplay loops stay independent of Japanization, but the completed world-suite integration **requires** them after package/release readiness. No incomplete owner may be claimed as already loaded.
 
 ---
 
