@@ -25,7 +25,7 @@ Other race and Faction mods may introduce their own TraderKindDefs or reuse thos
 ## Refined design contract
 
 - **Ironmaking standalone:** limited sand-iron sales/buys are owned by Ironmaking. Never silently edit Vanilla or MO trader availability.
-- **MO + Japanization without Ironmaking:** preserve MO iron availability and trade. No optional sand-iron references are required.
+- **MO + Japanization without Ironmaking:** **unsupported by the 2026-10-16 full-suite dependency contract.** Standalone MO / MO + Ironmaking retains its upstream behavior without Japanization; the Japanized AMJ profile always includes Ironmaking.
 - **MO + Japanization + Ironmaking, metalChain ON:** this is the **reference balance profile** for sand iron as the main local ironmaking source, with MO ore subsidiary. Japanization adjusts only MO-owned mineables/Mine Shaft/iron-material seller generators, preserving useful imported iron before domestic smelting.
 - **metalChain OFF:** supported **compatibility profile**, not the same scarcity guarantee. Preserve the player's choice; never silently force ON. Test direct ingots from MO mineables and Mine Shaft, and do not apply an IronOre-only patch expecting to affect those outputs.
 - **Vanilla and other Faction/Orbital Steel traders:** report as external supply to measure; no automatic global filter in Japanization. An opt-in world-wide ancient/medieval economic profile would require its own agreed owner and scope (Project World Rules is an idea, not an implemented dependency).
@@ -128,7 +128,7 @@ Reference:
 ## Pending loaded tests
 
 1. Read actual installed RimWorld 1.6 Core trader XML for **Steel**; inspect all trader classes, category paths, and sell/buy generators. Do not copy numerical amounts from modded/older logs.
-2. Test `Vanilla + Ironmaking`, `MO + Ironmaking`, `MO + Japanization`, and `MO + Japanization + Ironmaking`. For the integrated MO profile run `metalChain` ON/OFF × `vanillaMine` ON/OFF as a 2×2, with `woodChain` paired representative cases.
+2. For independent baseline comparisons test `Vanilla + Ironmaking` and `MO + Ironmaking` **without** Japanization. For Japanization test **MO + every required AMJ world component + Japanization only**, with `metalChain` ON/OFF × `vanillaMine` ON/OFF as a 2×2, plus representative `woodChain` combinations. A MO-only Japanization or Japanization without Ironmaking profile is invalid.
 3. Capture actual loaded `TraderKindDef`, Faction, StockGenerator type, item source, sale vs purchase, quantity and price for base, caravan and any relevant orbital/external merchant.
 4. Check `ResourcesRaw` and `DankPyon_RawOres` inclusion, **deep-resource ore and ingot generation/actual mining**, direct ingot surface deposits and Mine Shaft output, trade restocking and simulated 1–2-year iron purchases/production. The deep-ingot path must be tested even with metalChain ON.
 5. Check combined MO + AMJ + user's supported race/Faction Mod profile for new seller paths. Do not globally rewrite unrelated stock generators to force a pass.
