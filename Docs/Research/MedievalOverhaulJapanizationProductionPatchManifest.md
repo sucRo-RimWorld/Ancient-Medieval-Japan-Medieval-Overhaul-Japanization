@@ -10,6 +10,11 @@ a runtime dependency.
 
 ## 1. Patch-order contract
 
+**2026-10-16 dependency correction:** Japanization requires **MO + all active AMJ world modules**; the old 'MO-only Japanization' production/test variants are invalid. Grains and Ironmaking are required components for every Japanization runtime, while their standalone MO compatibility still remains self-owned. Only **third-party** DBH/WTL/VE overlays are optional. Future AMJ owner packages are added to the hard-dependency set after final ID/payload readiness; until then no completed full-suite release is claimed.
+
+**Production implementation now present:** `Patches/Production/DisableHayToStraw.xml` removes two `DankPyon_StrawProcess` menu entries from MO's 1x2 and 2x2 Drying Racks. It deliberately leaves upstream `ProcessorFramework.ProcessDef` and all consumers/other drying processes untouched. AMJ Grains MO-only thresh coproduct supplies `DankPyon_Straw`. This change is **source-implemented**, static XML validation required, **native 1.6/1.7 not yet passed**. Existing ProcessorFramework saves can retain an in-progress `StrawProcess` and must be separately tested before release; this document does not authorize deletion of upstream ProcessDef.
+
+
 Production patches should be organized by semantic ownership rather than by
 file-name luck.
 
@@ -20,7 +25,7 @@ Recommended order:
 3. **ThingDef / RecipeDef / ProcessDef historical curation**
 4. **MO-owned label / description / graphic rewrites**
 5. **PawnKind / Faction loadout and presentation rewrites**
-6. **Official optional compatibility overlays**
+6. **Required AMJ suite adaptation and external-only optional compatibility overlays**
 7. **static ledger validation**
 8. **runtime Pickle / RimTest profiles**
 
