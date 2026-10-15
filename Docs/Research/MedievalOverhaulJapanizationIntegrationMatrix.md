@@ -1,6 +1,6 @@
 # Medieval Overhaul Japanization Integration Matrix
 
-**Status:** Project-owned pre-split architecture for `AMJ - Medieval Overhaul Japanization`.
+**Status:** authoritative Japanization owner integration matrix. **2026-10-16 author correction supersedes the old MO-only/optional-AMJ package profile:** Japanization requires MO **plus every active AMJ world-suite Mod**; independent owners remain usable without Japanization.
 
 This document defines how Japanization interacts with standalone AMJ modules
 and external MO-adjacent systems without becoming a new Core or stealing their
@@ -48,8 +48,7 @@ Examples:
 - hiding/rerouting DBH-for-Medieval content whose upstream assumptions become invalid under the historical profile;
 - resolving conflicts caused by Japanization's own research/Def changes.
 
-This layer is allowed to depend on the presence of the corresponding optional
-AMJ/external Mod, because Japanization itself already requires MO.
+This layer **requires all active AMJ world-suite Mods**. Only external systems such as DBH, WTL, VE and optional third-party frameworks are presence-conditional. A newly finished AMJ world module must be added to Japanization hard dependencies before the full-suite release can claim completion.
 
 ---
 
@@ -83,22 +82,24 @@ This rule prevents Japanization from becoming a mandatory bridge pack.
 
 ---
 
-## 3. Integration matrix
+## 3. Integration matrix — one-way full-suite contract
 
-| Profile / partner | Standalone owner keeps | Japanization owns | Hard dependency? | Key invariant |
+**Runtime contract:** Japanization → MO + active AMJ modules; standalone AMJ modules **never** depend on Japanization. The currently published package IDs are in `About/About.xml`: Environment, Grains, Scenarios, Waterworks, Ironmaking and Crop Growth Balance (the Grains historical `core` packageId is deliberately preserved). As future AMJ world components acquire stable packageIds and runnable payloads (Culture, Wild Food Foraging, Rice Cultivation, Factions, domestic goods, etc.), **they become required**, rather than optional Japanization plugins. No full AMJ Japanization release should be asserted before the planned required set exists. Archived/deprecated or independently generic tools (CCTO, CCTO for VPE) and third-party WTL/DBH are not automatically part of this world-suite contract.
+
+| Profile / partner | Standalone owner keeps | Japanization owns | Japanization requirement | Key invariant |
 |---|---|---|---|---|
-| **MO only + Japanization** | n/a | MO research reconstruction, Def/Recipe/Process curation, MO retextures, PawnKind/Faction cleanup | MO only | Japanization must remain useful without any other AMJ Mod |
-| **Grains** | dry-field crops, primary processing, fallback wheat/flour/mill; its ordinary MO compatibility such as MO wheat/flour/Millstone reuse | adapt the Japanized MO research graph so Grains' MO contract still works; do not duplicate Grains recipes | optional | `MO + Grains` must work without Japanization |
-| **Rice Cultivation** | paddy/rice/items/processing; any rice-specific optional use of MO Drying Rack/equipment | only resolve changes caused by Japanized MO research/equipment visibility | optional | rice never becomes a Japanization feature |
-| **Ironmaking** | sand-iron resources, Japanese furnace loop, ironmaking recipes/equipment and ordinary sand-iron trade; ordinary `MO + Ironmaking` compatibility | MO-side research reconnection and additional MO ore/Mine Shaft/**iron-material trader stock** rebalance in `MO + Japanization + Ironmaking` | optional | without Japanization, Ironmaking leaves MO ore and MO iron trading unchanged; with it, imports complement rather than eclipse domestic production |
-| **Waterworks** | natural freshwater intake + dug open canals; future consumer API only when a real need exists | currently **nothing**; do not connect MO Watermill to Waterworks merely because both involve water | no integration requirement | MO Watermill remains independent; Waterworks owns no water power |
-| **DBH / DBH for Medieval** | DBH owns PipeNet, pumping, storage, hygiene/water consumers; DBH for Medieval owns its C# facilities | Japanize/reroute DBH-for-Medieval research/material/art where it depends on MO; replace hidden Windmill research links | official optional compatibility | DBH canal remains PipeNet/sprinkler system, not Waterworks canal |
-| **Hot Springs** | natural spring generation, bathing/tōji, safety/autonomy rules | only MO/DBH-side conflict/research/art resolution; do not absorb bathing gameplay | optional | remote conveyance remains a Hot Springs/Waterworks boundary, not Japanization |
-| **Fermentation / Brewing / Preservation** | own fermentation/alcohol/preservation loops and any normal MO equipment hookups required by those Mods | curate MO's own Western food branches and keep Japanized research compatible with optional owner patches | optional | MO Presser/Drying Rack convenience does not transfer gameplay ownership |
-| **AMJ Factions** | new Japanese factions, social structure, settlements and faction mechanics | Japanize retained **MO-owned** FactionDefs/PawnKinds and prevent Western gear leakage | optional | transforming MO Noble House is not the same as implementing Japanese faction society |
-| **AMJ Clothing / external Japanese clothing Mods** | genuinely new clothing Defs and broader clothing catalogue | MO-owned apparel reinterpretation/retexture and MO PawnKind loadouts | optional | Japanization does not become a full Japanese clothing pack |
-| **Living-style Thought / Culture** | Vanilla Thought/Trait/Need/social-norm correction in their own modules | only MO-specific Def/text integration caused by MO content | optional | no global culture overhaul inside Japanization |
-| **World Tech Level** | broad world/TechLevel restriction | MO internal historical research reconstruction | strongly recommended, not hard | neither duplicates the other's job |
+| **MO only + Japanization** | — | **unsupported configuration** | **invalid** | A MO-only fallback is not a deliverable |
+| **Grains** | grain crops, thresh, MO-only Straw coproduct, normal MO mill/wheat integration | adapt Japanized research/equipment; **hide MO Hay→Straw drying-rack process** | **required now** | Straw comes from cereals; no copy of Grains recipes |
+| **Environment** | Japanese biomes, wild grass, Suge Hay 1 | preserve the direct grass→Hay harvest; MO-specific world presentation only | **required now** | grass/hay is not cereal straw |
+| **Scenarios** | Japanese starts | MO story/background integration if meaningful | **required now** | no duplicate Scenarios |
+| **Waterworks** | freshwater intake and canals | only relevant MO research/presentation reconciliation | **required now** | no arbitrary MO Watermill→canal merger |
+| **Ironmaking** | sand iron and original MO-compatible smelting | complete MO research, ore, Mine Shaft, and MO iron trader rebalance for Japanese setting | **required now** | no MO-only rescue profile; Ironmaking itself standalone |
+| **Crop Growth Balance** | 13 Vanilla/MO timing values | preserve final crop/timing patches and Japanized research placement | **required now** | never duplicate `growDays` settings |
+| **Wild Food Foraging, Culture, Rice Cultivation, Factions, future AMJ world owners** | each owner controls its domain | integrate retained MO content with the full AMJ profile | **required when final packageId and production module exist** | cannot pretend the suite is complete while owner absent |
+| **DBH / DBH for Medieval** | hygiene, pipes, C# water consumers | narrow Japanized DBH research and material overlay | external optional | no PipeNet/canal replacement |
+| **Other third-party Mods / WTL / VE** | own functions | proven optional compatibility only | external optional | no forced third-party stack |
+
+**Straw-specific compatibility:** full-suite Japanization has Grains by construction. Grains’ existing MO threshing output makes a second Hay→Straw source both unnecessary and historically false. The 1.6 source demonstrates that `DankPyon_DryingRack_Small` and `DankPyon_DryingRack_Big` each list `DankPyon_StrawProcess`. The Japanization patch removes **only those two entries**, keeping the original ProcessDef for reference/save compatibility and preserving other dryer processes. Do **not** delete `DankPyon_Straw`, replace its material consumers or redefine `Hay`. Prior art: archived [Medieval Overhaul Patches](https://github.com/ViralReaction/Medieval-Overhaul-Patches), which instead redirects the dryer to a new DriedHay and outputs straw from milling; our smaller patch adds **no** DriedHay or extra drying step. VE comparison: VE's unrelated crop/processing systems do not justify overriding grain ownership or bundling a VE module. Native 1.6/1.7 loaded-Def/save/gameplay verification remains open.
 
 ---
 
@@ -128,7 +129,7 @@ Japanization may:
 
 ## 5. Ironmaking-specific boundary
 
-This profile intentionally has three different meanings:
+Separate **standalone compatibility** from the **single valid integrated Japanization profile**:
 
 ### `MO + Ironmaking`
 
@@ -137,14 +138,12 @@ This profile intentionally has three different meanings:
 - Ironmaking makes only the minimum compatibility changes required for its
   outputs/fuels/material chain.
 
-### `MO + Japanization`
+### `MO + full AMJ suite + Japanization`
 
-- no sand-iron gameplay is invented;
+- Ironmaking is already required and provides sand-iron gameplay;
 - MO's metal research is historically rearranged;
 - fantasy/Alchemy coupling is removed as required;
-- MO iron supply, including imports, remains usable because Ironmaking is absent.
-
-### `MO + Japanization + Ironmaking`
+- MO ore and trade supplement, rather than eclipse, AMJ native ironmaking.
 
 Japanization may additionally rebalance **MO-owned supply**:
 - surface iron-ore commonality/vein exposure;
@@ -234,8 +233,7 @@ Conceptual order:
 3. Standalone AMJ Mods' **ordinary MO compatibility** establishes their
    independent `MO + Mod` contract.
 4. Japanization performs MO-wide historical restructuring/retexture.
-5. Japanization optional integration patches adapt that reconstructed MO to
-   detected AMJ/DBH partners.
+5. Japanization integrates the **required AMJ suite as a whole**, with conditional overlays **only for external** partners such as DBH.
 6. Runtime validation checks the final loaded Def graph.
 
 The actual RimWorld XML mechanism may use `MayRequire`,
@@ -255,12 +253,11 @@ Do not test every possible AMJ Cartesian product.
 
 Minimum Japanization profiles:
 
-1. MO + Japanization
-2. MO + Japanization + Grains
-3. MO + Japanization + Ironmaking
-4. MO + Japanization + Grains + Ironmaking
-5. MO + Japanization + DBH + DBH for Medieval
-6. MO + Japanization + relevant future owner only when its integration exists
+1. **MO + entire current active AMJ world suite + Japanization** — the only supported core Japanization profile.
+2. The identical full suite **+ DBH + DBH for Medieval** — optional external overlay, only if implemented.
+3. The identical full suite + any accepted third-party compatibility target, only when meaningful.
+4. **Negative dependency checks:** MO + Japanization without Grains, Ironmaking or another mandatory AMJ module must be rejected by dependency resolution rather than advertised as supported.
+5. Full-suite 1.6/1.7 loaded-Def audit: both drying-rack menu lists lack StrawProcess, while their other processors remain and Grains thresh yields genuine MO Straw.
 
 Separately, each standalone Mod keeps its own independent compatibility
 profiles, for example:
@@ -290,7 +287,7 @@ Japanization is neither:
 - nor a monolithic “make all installed Mods Japanese” filter.
 
 It is specifically the layer that **reconstructs MO itself and then resolves
-the consequences of that reconstruction for supported optional partners**.
+the consequences of that reconstruction for the **entire required AMJ world suite**; external compatibility remains optional**.
 
 Standalone AMJ Mods continue to own the compatibility necessary to remain
 standalone.
