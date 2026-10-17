@@ -15,7 +15,8 @@ The concept is defined, but there is no dedicated owner repository yet. Project 
 基本構成:
 - MOなしで遊べる各AMJ Modは、従来どおり独立した主要ゲームループを持つ
 - MOを利用する日本化構成: `RimWorld + Medieval Overhaul + AMJ世界構成の全Mod + Ancient & Medieval Japan - Medieval Overhaul Japanization`。**MO単独＋Japanization／一部AMJ ModだけのJapanization構成は非対応**
-- **依存方向はJapanization → MOおよびAMJ全世界構成Modの一方向**。既存packageIdが確定したEnvironment、Grains、Scenarios、Waterworks、Ironmaking、Crop Growth Balanceは現時点からJapanizationの`About/About.xml`で必須。今後のWild Food Foraging、Culture、Rice Cultivation、Factions、生活道具等はpackageId／本番提供が確定した段階で必須集合へ追加し、それまでは**AMJ一式として完成・公開可能とは扱わない**。各Mod自体はJapanizationなしで引き続き動作する。CCTO／CCTO for VPE等の独立汎用拡張、World Tech Level、DBH、VEなど外部Modはこの『全AMJ』に自動包含しない
+- **依存方向はJapanization → MOおよびAMJ全世界構成Modの一方向**。既存packageIdが確定したEnvironment、Grains、Scenarios、Waterworks、Ironmaking、Crop Growth Balanceは現時点からJapanizationの`About/About.xml`で必須。今後のCulture、Rice Cultivation、Factions、生活道具等の**独立Mod**はpackageId／本番提供が確定した段階で必須集合へ追加し、それまでは**AMJ一式として完成・公開可能とは扱わない**。各Mod自体はJapanizationなしで引き続き動作する。CCTO／CCTO for VPE等の独立汎用拡張、World Tech Level、DBH、VEなど外部Modはこの『全AMJ』に自動包含しない
+- **2026-10-17作者決定の所有修正：** 山野採集（旧Wild Food Foraging）の採用済み12資源と採集機能は[Environment正本](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Docs/ForagingIntegrationDesign-ja.md)へ統合する。Environmentはすでに必須のため、**独立WFF Modは今後のJapanization必須集合に加えない**。採集/農業の調整は全部入りAMJ構成の本来の要件であり、新Modを作る理由ではない。
 - **World Tech Levelは、中世を越えるVanilla/他Mod要素をTech Levelで制限するための強い推奨Mod**とする。JapanizationはWorld Tech Levelの包括的制限機能を再実装せず、World Tech Level自体もJapanizationの必須依存にはしない
 - MO本体のpackageId・既存Defを可能な限り維持し、MO互換Modとの接続を壊さずにPatchする
 
