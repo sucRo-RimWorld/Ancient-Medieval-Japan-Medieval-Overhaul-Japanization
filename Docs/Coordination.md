@@ -4,6 +4,10 @@ This is the authoritative coordination surface for this repository.
 
 Use it only for status, handoff, blockers, and workstream coordination. Confirmed design belongs in `Docs/Design.md`, `Docs/Research/`, machine ledgers, production XML/code/assets, and tests.
 
+## MOJ-WFF-ENV-MERGE-20261017 — current dependency handoff
+
+**Owner:** Japanization full-suite dependency contract. 2026-10-17 author transferred the former Wild Food Foraging's 12-resource production scope into Environment. Current `About/About.xml` already requires Environment; **no WFF packageId, new dependency, hidden Foraging production provider or duplicate patch should be added**. Continue to require future genuinely independent AMJ modules (Culture, Rice Cultivation etc.) once they exist. Formal source: `Docs/Design.md` and `Docs/Research/MedievalOverhaulJapanizationIntegrationMatrix.md`; historical WFF sources remain archival. No runtime code/Steam changes.
+
 ## Status vocabulary
 
 - **OPEN** — needs work
@@ -51,7 +55,7 @@ Migration evidence:
 
 Package identity:
 - `sucro.ancientmedievaljapan.medievaloverhauljapanization`
-- **2026-10-16 revised:** hard dependencies in current `About/About.xml` = `DankPyon.Medieval.Overhaul` + six package-identified AMJ world modules; **no MO-only Japanization**. Future AMJ components, including Culture and WFF, are pending ID/payload and must join the required set before any completed-suite release claim. Archived/deprecated and generic CCTO/third-party Mods are not silently required.
+- **2026-10-16 revised:** hard dependencies in current `About/About.xml` = `DankPyon.Medieval.Overhaul` + six package-identified AMJ world modules; **no MO-only Japanization**. Future independent AMJ components, including Culture and Rice Cultivation, are pending ID/payload and must join the required set before any completed-suite release claim. Author's 2026-10-17 consolidation moved all 12 formerly WFF-owned wild foods into existing required **Environment**: **never add a separate WFF dependency**. Archived/deprecated and generic CCTO/third-party Mods are not silently required.
 
 No GitHub Actions workflow is enabled yet. Add CI only after the static checks are stable enough to avoid notification spam.
 
