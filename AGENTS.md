@@ -13,7 +13,7 @@ New features cannot enter implementation before the Project [existing-Mod audit 
 - Specification: `Docs/Design.md`; historical/technical evidence: `Docs/Research/`; decision ledgers: `Docs/Research/Data/`; static tooling: `Tools/`.
 - Source XML/C# records implementation, not proof of final loaded behavior. Supported runtime profiles must reach ERROR 0 before release claims; follow Project's evidence and test procedure.
 - Preserve MO Def identity where required by compatibility and the independent owners listed below. Inspect the actual final patched Def/state before claiming an integration works.
-- Release metadata: `Tests/validate_add_changenote.py`; it does not establish gameplay or complete payload readiness.
+- Release metadata: `Tests/Release/validate_add_changenote.py`; it does not establish gameplay or complete payload readiness.
 
 ## Scope
 
