@@ -15,6 +15,8 @@ a runtime dependency.
 **Production implementation now present:** `Patches/Production/DisableHayToStraw.xml` removes two `DankPyon_StrawProcess` menu entries from MO's 1x2 and 2x2 Drying Racks. It deliberately leaves upstream `ProcessorFramework.ProcessDef` and all consumers/other drying processes untouched. AMJ Grains MO-only thresh coproduct supplies `DankPyon_Straw`. This change is **source-implemented**, static XML validation required, **native 1.6/1.7 not yet passed**. Existing ProcessorFramework saves can retain an in-progress `StrawProcess` and must be separately tested before release; this document does not authorize deletion of upstream ProcessDef.
 
 
+**2026-10-19 additional MO crop balance:** `Patches/Cultivation/MOLentilSowingSkill.xml` changes only `DankPyon_Plant_Lentils/plant/sowMinSkill` to **2**, replacing original MO 1.6.2.2 **8**. This correction is for the full-suite Japanization overlay only, not standalone MO, Grains or Crop Growth Balance. Do not change CGB's lentil `growDays=8`, Grains' rice skill 4 or other MO crop stats. Existing source patch and the scope-constrained static test are the current evidence; no Native PASS or published availability is claimed. See `Docs/Design.md`.
+
 Production patches should be organized by semantic ownership rather than by
 file-name luck.
 
