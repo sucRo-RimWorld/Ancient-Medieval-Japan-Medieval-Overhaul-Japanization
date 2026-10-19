@@ -16,7 +16,6 @@ REQUIRED = {
     "sucro.ancientmedievaljapan.scenarios",
     "sucro.ancientmedievaljapan.waterworks",
     "sucro.ancientmedievaljapan.ironmaking",
-    "sucro.ancientmedievaljapan.cropgrowthbalance",
 }
 RACKS = {"DankPyon_DryingRack_Small", "DankPyon_DryingRack_Big"}
 EXPECTED_SUFFIX = (
@@ -62,28 +61,13 @@ class FullSuiteAndStrawContract(unittest.TestCase):
         self.assertNotIn("Haygrass", xml)
 
 
-    def test_japanization_lentil_skill_is_targeted_and_does_not_touch_rice(self):
-        # Full-suite MO crop adjustment only. Other 13 crop growth-day values
-        # belong to Crop Growth Balance, rice belongs to Grains.
-        path = ROOT / "Patches" / "Cultivation" / "MOLentilSowingSkill.xml"
-        root = ET.parse(path).getroot()
-        self.assertEqual(root.tag, "Patch")
-        operations = root.findall("Operation")
-        self.assertEqual(len(operations), 1)
-        operation = operations[0]
-        self.assertEqual(operation.get("Class"), "PatchOperationConditional")
-        target = '/Defs/ThingDef[defName="DankPyon_Plant_Lentils"]/plant/sowMinSkill'
-        self.assertEqual(operation.findtext("xpath"), target)
-        match = operation.find("match")
-        self.assertEqual(match.get("Class"), "PatchOperationReplace")
-        self.assertEqual(match.findtext("xpath"), target)
-        self.assertEqual(match.findtext("value/sowMinSkill"), "2")
-        nomatch = operation.find("nomatch")
-        self.assertEqual(nomatch.get("Class"), "PatchOperationAdd")
-        self.assertEqual(nomatch.findtext("xpath"),
-                         '/Defs/ThingDef[defName="DankPyon_Plant_Lentils"]/plant')
-        self.assertEqual(nomatch.findtext("value/sowMinSkill"), "2")
-        self.assertNotIn("Plant_Rice", path.read_text(encoding="utf-8"))
+    def test_no_duplicate_crop_balance_or_retired_dependency(self):
+        self.assertFalse((ROOT / "Patches/Cultivation/MOLentilSowingSkill.xml").exists())
+        self.assertNotIn("sucro.ancientmedievaljapan.cropgrowthbalance",
+                         ABOUT.read_text(encoding="utf-8"))
+        for path in (ROOT / "Patches").rglob("*.xml"):
+            self.assertNotIn("DankPyon_Plant_Lentils", path.read_text(encoding="utf-8"))
+
 
 
 if __name__ == "__main__":
