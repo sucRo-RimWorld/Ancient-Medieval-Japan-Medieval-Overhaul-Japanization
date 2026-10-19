@@ -15,7 +15,7 @@ The concept is defined, but there is no dedicated owner repository yet. Project 
 基本構成:
 - MOなしで遊べる各AMJ Modは、従来どおり独立した主要ゲームループを持つ
 - MOを利用する日本化構成: `RimWorld + Medieval Overhaul + AMJ世界構成の全Mod + Ancient & Medieval Japan - Medieval Overhaul Japanization`。**MO単独＋Japanization／一部AMJ ModだけのJapanization構成は非対応**
-- **依存方向はJapanization → MOおよびAMJ全世界構成Modの一方向**。既存packageIdが確定したEnvironment、Grains、Scenarios、Waterworks、Ironmaking、Crop Growth Balanceは現時点からJapanizationの`About/About.xml`で必須。今後のCulture、Rice Cultivation、Factions、生活道具等の**独立Mod**はpackageId／本番提供が確定した段階で必須集合へ追加し、それまでは**AMJ一式として完成・公開可能とは扱わない**。各Mod自体はJapanizationなしで引き続き動作する。CCTO／CCTO for VPE等の独立汎用拡張、World Tech Level、DBH、VEなど外部Modはこの『全AMJ』に自動包含しない
+- **依存方向はJapanization → MOおよびAMJ全世界構成Modの一方向**。既存packageIdが確定したEnvironment、Grains（旧Crop Growth Balanceを含む）、Scenarios、Waterworks、Ironmakingは現時点からJapanizationの`About/About.xml`で必須。今後のCulture、Rice Cultivation、Factions、生活道具等の**独立Mod**はpackageId／本番提供が確定した段階で必須集合へ追加し、それまでは**AMJ一式として完成・公開可能とは扱わない**。各Mod自体はJapanizationなしで引き続き動作する。CCTO／CCTO for VPE等の独立汎用拡張、World Tech Level、DBH、VEなど外部Modはこの『全AMJ』に自動包含しない
 - **2026-10-17作者決定の所有修正：** 山野採集（旧Wild Food Foraging）の採用済み12資源と採集機能は[Environment正本](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Docs/ForagingIntegrationDesign-ja.md)へ統合する。Environmentはすでに必須のため、**独立WFF Modは今後のJapanization必須集合に加えない**。採集/農業の調整は全部入りAMJ構成の本来の要件であり、新Modを作る理由ではない。
 - **World Tech Levelは、中世を越えるVanilla/他Mod要素をTech Levelで制限するための強い推奨Mod**とする。JapanizationはWorld Tech Levelの包括的制限機能を再実装せず、World Tech Level自体もJapanizationの必須依存にはしない
 - MO本体のpackageId・既存Defを可能な限り維持し、MO互換Modとの接続を壊さずにPatchする
@@ -159,7 +159,7 @@ AMJ各独立Modは、自分が所有する機能の研究・解禁条件を引�
 
 作物・農業についても、作物固有の性能値はGrains / Rice Cultivation等の所有Modで先に決め、Japanizationの研究Tierへ合わせるために性能を逆算しない。研究位置を決める際は、日本での利用・栽培時代、栽培技術、収穫後加工、MO既存設備との接続、ゲーム上の進行導線を合わせて判断する。
 
-**2026-10-19 MOレンズ豆の播種技能調整（作者の承認に基づく対象限定の例外）:** MO 1.6.2.2の`DankPyon_Plant_Lentils`は`sowMinSkill=8`で、同じMOのタマネギ3、ニンジン・キャベツ4と比べて不釣り合いに高度な技能を要求している。専門的な栽培技術を要するのがレンズ豆固有の史実とは確認できないため、**Japanizationが有効な全AMJ+MO構成ではレンズ豆のみ播種スキル2**に変更する。現行Grainsの稲`Plant_Rice`の播種スキル4は、雑穀0・ソバ1・大麦2・MOレンズ豆2・稲4・MOニンジン/キャベツ4というゲーム上の習熟段階として今回維持する。米4は水稲の史実上の必須技能という意味ではない。MOレンズ豆の`growDays`、基礎収穫量、肥沃度、耐寒、研究、素材、調理、名称は本修正で変更せず、Crop Growth Balanceが所有するMOレンズ豆の`growDays=8`と共存する。**この変更はJapanizationでのみ有効**で、MO単体・MO+Grains・MO+Crop Growth Balanceの通常構成を勝手に変更しない。将来の独立豆Modで重複所有する場合は実装を移管して二重Patchを避ける。正本XMLは`Patches/Cultivation/MOLentilSowingSkill.xml`。Source-only調整済み、現行ゲームのロード・実播種テストは未実行。
+**2026-10-19 統合訂正:** 旧Japanizationレンズ豆スキル2パッチは**Grainsの任意MO互換パッチへ移管・削除済み**。同じGrainsが旧Crop Growth Balanceのバニラ6＋MO7作物のgrowDaysも所有する。Japanizationは作物のスキル・生育日数を二重Patchせず、日本化研究・生産・表示だけを調整する。GrainsなしでJapanizationを利用する構成は引き続き非対応。収穫量・栽培技能の追加均衡はGrainsがまとめて検討する。
 
 
 ---

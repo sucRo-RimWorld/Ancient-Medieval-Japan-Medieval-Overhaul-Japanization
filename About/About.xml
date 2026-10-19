@@ -32,11 +32,7 @@
       <packageId>sucro.ancientmedievaljapan.ironmaking</packageId>
       <displayName>AMJ - Ironmaking</displayName>
     </li>
-    <li>
-      <packageId>sucro.ancientmedievaljapan.cropgrowthbalance</packageId>
-      <displayName>AMJ - Crop Growth Balance</displayName>
-    </li>
-  </modDependencies>
+</modDependencies>
   <loadAfter>
     <li>DankPyon.Medieval.Overhaul</li>
     <li>sucro.ancientmedievaljapan.environment</li>
@@ -44,8 +40,7 @@
     <li>sucro.ancientmedievaljapan.scenarios</li>
     <li>sucro.ancientmedievaljapan.waterworks</li>
     <li>sucro.ancientmedievaljapan.ironmaking</li>
-    <li>sucro.ancientmedievaljapan.cropgrowthbalance</li>
-  </loadAfter>
+</loadAfter>
   <description>Development build.
 
 Official Ancient &amp; Medieval Japan integration layer for Medieval Overhaul. Reconstructs Medieval Overhaul research, production, equipment, buildings, generated content, labels and graphics around ancient-to-medieval Japan while preserving useful upstream systems and Def identities where practical.
