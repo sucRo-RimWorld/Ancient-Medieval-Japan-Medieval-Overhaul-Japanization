@@ -13,13 +13,12 @@ Early development. Design migration from `Ancient-Medieval-Japan-Project` is in 
 Required:
 - Medieval Overhaul
 - AMJ - Environment
-- AMJ - Grains
+- AMJ - Grains (includes formerly separate Crop Growth Balance crop timing and MO lentil skill)
 - AMJ - Scenarios
 - AMJ - Waterworks
 - AMJ - Ironmaking
-- AMJ - Crop Growth Balance
 
-Japanization is an **all-AMJ-suite integration**: MO-only or partial-AMJ Japanization profiles are intentionally unsupported. More AMJ world modules (e.g. Culture, Wild Food Foraging, Rice Cultivation) become required as their real package IDs and playable releases become available; the all-suite product is **not release-ready** before then. Generic CCTO, DBH, World Tech Level, VE and other external Mods are outside this suite requirement and remain independently optional. Each underlying AMJ Mod is usable without Japanization.
+Japanization is an **all-AMJ-suite integration**: MO-only or partial-AMJ Japanization profiles are intentionally unsupported. More AMJ world modules (e.g. Culture, Rice Cultivation) become required as their real package IDs and playable releases become available; the all-suite product is **not release-ready** before then. Generic CCTO, DBH, World Tech Level, VE and other external Mods are outside this suite requirement and remain independently optional. Each underlying AMJ Mod is usable without Japanization.
 
 ## Design principle
 
