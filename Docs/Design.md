@@ -159,6 +159,9 @@ AMJ各独立Modは、自分が所有する機能の研究・解禁条件を引�
 
 作物・農業についても、作物固有の性能値はGrains / Rice Cultivation等の所有Modで先に決め、Japanizationの研究Tierへ合わせるために性能を逆算しない。研究位置を決める際は、日本での利用・栽培時代、栽培技術、収穫後加工、MO既存設備との接続、ゲーム上の進行導線を合わせて判断する。
 
+**2026-10-19 MOレンズ豆の播種技能調整（作者の承認に基づく対象限定の例外）:** MO 1.6.2.2の`DankPyon_Plant_Lentils`は`sowMinSkill=8`で、同じMOのタマネギ3、ニンジン・キャベツ4と比べて不釣り合いに高度な技能を要求している。専門的な栽培技術を要するのがレンズ豆固有の史実とは確認できないため、**Japanizationが有効な全AMJ+MO構成ではレンズ豆のみ播種スキル2**に変更する。現行Grainsの稲`Plant_Rice`の播種スキル4は、雑穀0・ソバ1・大麦2・MOレンズ豆2・稲4・MOニンジン/キャベツ4というゲーム上の習熟段階として今回維持する。米4は水稲の史実上の必須技能という意味ではない。MOレンズ豆の`growDays`、基礎収穫量、肥沃度、耐寒、研究、素材、調理、名称は本修正で変更せず、Crop Growth Balanceが所有するMOレンズ豆の`growDays=8`と共存する。**この変更はJapanizationでのみ有効**で、MO単体・MO+Grains・MO+Crop Growth Balanceの通常構成を勝手に変更しない。将来の独立豆Modで重複所有する場合は実装を移管して二重Patchを避ける。正本XMLは`Patches/Cultivation/MOLentilSowingSkill.xml`。Source-only調整済み、現行ゲームのロード・実播種テストは未実行。
+
+
 ---
 
 
