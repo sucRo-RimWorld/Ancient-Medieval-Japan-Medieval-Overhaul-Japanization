@@ -1,5 +1,10 @@
 # AMJ - Medieval Overhaul Japanization Coordination
 
+## MOJ-CGB-TRANSFER-20261019 — crop ownership moved to Grains
+
+**MERGED:** Japanization [PR #17](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Medieval-Overhaul-Japanization/pull/17), `ee05de61c1eeaca9749d0450e3847b56d4b3ae4e`. Former independent CGB hard dependency `sucro.ancientmedievaljapan.cropgrowthbalance` and Japanization's MO lentil sowMinSkill=2 patch removed. Grains [#183](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Grains/pull/183) `89a71ea1b223d46bcab2dec46eadb8f2189c70cf` now owns both six Vanilla/seven MO crop timings and lentil skill2. Retain Japanization's MO plus **five** currently package-identified AMJ world modules requirement (Environment, Grains, Scenarios, Waterworks, Ironmaking); other additions follow the canonical suite policy. Previous six-module and Japanization-owned lentil notes are superseded. Static source-only migration; native Japanization + merged Grains acceptance remains OPEN.
+
+
 This is the authoritative coordination surface for this repository.
 
 Use it only for status, handoff, blockers, and workstream coordination. Confirmed design belongs in `Docs/Design.md`, `Docs/Research/`, machine ledgers, production XML/code/assets, and tests.
