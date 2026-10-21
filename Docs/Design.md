@@ -85,6 +85,9 @@ MO連携は「MOの建物/研究を残すか消すか」というMod単位・研
 
 現時点の代表例:
 - **Drying Rack:** 食品などの汎用乾燥機構として再利用。ただし**野草Hayを穀物藁Strawへ『乾燥だけで変える』工程は不採用**。Grainsの既存MO併用脱穀副産物`DankPyon_Straw`を藁供給源とし、`Patches/Production/DisableHayToStraw.xml`で小型・大型乾燥ラックの`DankPyon_StrawProcess`参照のみ除去する。ProcessDef自体と他の肉類等の乾燥工程は消さず、既存セーブで進行中のProcessor状態とTrading／既存配置物は1.6実機未検証。旧MO単独へのStraw供給保障はJapanizationの責務ではない
+  **屋根付き乾燥台の小規模改善（2026-10-21、1.6実機未検証）:** `Patches/Production/RoofedDryingRacks.xml` により、既存の小型・大型 `DankPyon_DryingRack_*` の屋根設置禁止と `PlaceWorker_NotUnderRoof` を解除する。加工基盤はProcessor Frameworkのまま維持し、MO-ownedの干し肉3系統および魚Defが存在する場合の干し魚 `ProcessDef` に限って `sunFactor=0.85~1.0`、`windFactor=0.9~1.1` を適用する（上流は `0.5~1.0` と `0.75~1.25`）。PFの屋根判定は日照・風の両方を低下させるため、全面屋根下で倍率が0.375になる旧状態を約0.765に改善し、露天との差は残す。加工日数2.5日・歩留まり・容量・雨雪係数・研究・ProcessDefのIDと保存状態・`DankPyon_StrawProcess`の既存除外は変更しない。完全密閉室と軒下はPF標準の`RoofCoverage`だけでは区別できず、湿度・通風の独自再現は本変更に含めない。
+
+  **未対応:** PFでは降雨が加工速度を低下させるだけで加工を損なわず、原料コンテナ内の通常腐敗Tickも進行しない。長雨による損傷を追加するには、PFの既存`ruinedPercent`をバッチ単位で加算するC#等が必要。リポジトリにC#ビルド・配布経路がない現状でDLLを無検証追加しない。独立乾燥Addonや原料ごとの鮮度・品質・専用Bill管理も追加しない。既存セーブ、最終ロードDef、Odyssey/Vanilla Fishing Expanded、実プレイ速度・UIは1.6実機で未検証。
 - **Millstone:** Bill式WorkTableとしてGrains等との任意接続に向く
 - **Watermill:** 水力と穀物製粉は維持候補だが、MO同梱の2倍製材Processは標準から外す
 - **Smoker:** PF機構は独自性があるが、日本の標準的な古代～中世保存技術としての根拠が弱いため標準非表示
