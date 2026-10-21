@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- MO 1.6.2.2: allow roofed MO drying racks; keep all upstream Def identities and other processes. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Small"]/canBeUsedUnderRoof</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Small"]/canBeUsedUnderRoof</xpath>
+      <value><canBeUsedUnderRoof>true</canBeUsedUnderRoof></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Small"]/placeWorkers/li[text()="PlaceWorker_NotUnderRoof"]</xpath>
+    <match Class="PatchOperationRemove">
+      <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Small"]/placeWorkers/li[text()="PlaceWorker_NotUnderRoof"]</xpath>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Big"]/canBeUsedUnderRoof</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Big"]/canBeUsedUnderRoof</xpath>
+      <value><canBeUsedUnderRoof>true</canBeUsedUnderRoof></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Big"]/placeWorkers/li[text()="PlaceWorker_NotUnderRoof"]</xpath>
+    <match Class="PatchOperationRemove">
+      <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Big"]/placeWorkers/li[text()="PlaceWorker_NotUnderRoof"]</xpath>
+    </match>
+  </Operation>
+  <!-- PF RoofCoverage reduces both sunlight and wind. Keep mild shelter penalties, not the original compounded 37.5% rate. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatProcess"]/sunFactor</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatProcess"]/sunFactor</xpath>
+      <value><sunFactor>0.85~1.0</sunFactor></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatProcess"]/windFactor</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatProcess"]/windFactor</xpath>
+      <value><windFactor>0.9~1.1</windFactor></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatHumanProcess"]/sunFactor</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatHumanProcess"]/sunFactor</xpath>
+      <value><sunFactor>0.85~1.0</sunFactor></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatHumanProcess"]/windFactor</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatHumanProcess"]/windFactor</xpath>
+      <value><windFactor>0.9~1.1</windFactor></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatInsectProcess"]/sunFactor</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatInsectProcess"]/sunFactor</xpath>
+      <value><sunFactor>0.85~1.0</sunFactor></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatInsectProcess"]/windFactor</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatInsectProcess"]/windFactor</xpath>
+      <value><windFactor>0.9~1.1</windFactor></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedFishProcess"]/sunFactor</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedFishProcess"]/sunFactor</xpath>
+      <value><sunFactor>0.85~1.0</sunFactor></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedFishProcess"]/windFactor</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedFishProcess"]/windFactor</xpath>
+      <value><windFactor>0.9~1.1</windFactor></value>
+    </match>
+  </Operation>
+</Patch>
