@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Inject one PF-compatible rain damage comp into each existing MO rack.
+       Keep original rack IDs, contained PF comp, jobs, and process definitions.
+       This patch requires 1.6/Assemblies/AncientMedievalJapanMOJDrying.dll. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Small"]/comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Small"]/comps</xpath>
+      <value>
+        <li Class="AncientMedievalJapan.MedievalOverhaulJapanization.CompProperties_DryingRainDamage">
+          <fullRainDaysToRuin>2.0</fullRainDaysToRuin>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Big"]/comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName="DankPyon_DryingRack_Big"]/comps</xpath>
+      <value>
+        <li Class="AncientMedievalJapan.MedievalOverhaulJapanization.CompProperties_DryingRainDamage">
+          <fullRainDaysToRuin>2.0</fullRainDaysToRuin>
+        </li>
+      </value>
+    </match>
+  </Operation>
+</Patch>
