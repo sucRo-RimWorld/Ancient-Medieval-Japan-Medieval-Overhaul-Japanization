@@ -66,4 +66,69 @@
     <designationCategory>Production</designationCategory>
     <researchPrerequisites><li>Pemmican</li></researchPrerequisites>
   </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>AMJ_MOJ_WallDryingPoleLarge</defName>
+    <label>large wall hanging drying pole</label>
+    <description>A two-tile wall-mounted wooden pole to hang more food for drying. Uses the existing drying recipes.</description>
+    <category>Building</category>
+    <size>(2,1)</size>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <drawerType>RealtimeOnly</drawerType>
+    <graphicData>
+      <texPath>Things/Building/WallDryingPoleLarge/WallDryingPoleLarge</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>Cutout</shaderType>
+      <drawSize>(2.6,1.9)</drawSize>
+      <drawOffsetNorth>(0,0,0.55)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.55)</drawOffsetSouth>
+      <drawOffsetEast>(0.55,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.55,0,0)</drawOffsetWest>
+      <damageData><enabled>false</enabled></damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/WallDryingPoleLarge/WallDryingPoleLarge_MenuIcon</uiIconPath>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>Standable</passability>
+    <terrainAffordanceNeeded IsNull="True"/>
+    <pathCost>0</pathCost>
+    <fillPercent>0.1</fillPercent>
+    <selectable>true</selectable>
+    <tickerType>Rare</tickerType>
+    <statBases>
+      <MaxHitPoints>85</MaxHitPoints>
+      <WorkToBuild>260</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <stuffCategories><li>Woody</li></stuffCategories>
+    <costStuffCount>25</costStuffCount>
+    <building>
+      <isEdifice>false</isEdifice>
+      <canPlaceOverWall>true</canPlaceOverWall>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers><li>Placeworker_AttachedToWall</li></placeWorkers>
+    <comps>
+      <li Class="ProcessorFramework.CompProperties_Processor">
+        <capacity>50</capacity>
+        <independentProcesses>false</independentProcesses>
+        <parallelProcesses>false</parallelProcesses>
+        <dropIngredients>true</dropIngredients>
+        <showProductIcon>true</showProductIcon>
+        <barOffset>(0,0.25)</barOffset>
+        <barScale>(0.7,0.8)</barScale>
+        <processes>
+          <li>DankPyon_DriedMeatProcess</li>
+          <li>DankPyon_DriedMeatHumanProcess</li>
+          <li>DankPyon_DriedMeatInsectProcess</li>
+        </processes>
+      </li>
+      <li Class="AncientMedievalJapan.MedievalOverhaulJapanization.CompProperties_DryingRainDamage">
+        <fullRainDaysToRuin>2.0</fullRainDaysToRuin>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>
+    <designationCategory>Production</designationCategory>
+    <researchPrerequisites><li>Pemmican</li></researchPrerequisites>
+  </ThingDef>
 </Defs>

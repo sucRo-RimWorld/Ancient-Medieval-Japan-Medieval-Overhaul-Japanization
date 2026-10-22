@@ -27,11 +27,22 @@ jobs:
           from PIL import Image
           root=pathlib.Path(sys.argv[1])
           paths=sorted(root.glob('*.png'))
-          assert len(paths)==13, f'Expected 13 1.6 graphic states, got {len(paths)}'
+          assert len(paths)==26, f'Expected 26 1.6 graphic states, got {len(paths)}'
           for p in paths:
               with Image.open(p) as im:
                   assert im.size == (256, 256) and im.mode == 'RGBA'
                   assert im.getpixel((0, 0)) == (0, 0, 0, 0)
               print('AMJ_WALLPOLE_PNG',p.name,base64.b64encode(p.read_bytes()).decode())
+          for stem in ('WallDryingPole', 'WallDryingPoleLarge'):
+              images={direction:Image.open(root/f'{stem}FilledMeat_{direction}.png').convert('RGBA') for direction in ('north','south','east','west')}
+              assert len({im.tobytes() for im in images.values()}) == 4, f'{stem}: orientation duplicate'
+              for direction,im in images.items():
+                  a=im.getchannel('A')
+                  b=a.getbbox()
+                  assert b, f'{stem}: empty sprite'
+                  w,h=b[2]-b[0],b[3]-b[1]
+                  if direction in ('north','south'): assert w>h, (stem,direction,w,h)
+                  else: assert h>w, (stem,direction,w,h)
+              print('AMJ_WALLPOLE_DIRECTION_PASS',stem)
           print('AMJ_WALLPOLE_SPRITES_OK',len(paths))
           PY
