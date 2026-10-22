@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Only activate fish when the MO Odyssey/VFE provider supplies this ProcessDef. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedFishProcess"]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName="AMJ_MOJ_WallDryingPole"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes</xpath>
+      <value><li>DankPyon_DriedFishProcess</li></value>
+    </match>
+  </Operation>
+</Patch>
