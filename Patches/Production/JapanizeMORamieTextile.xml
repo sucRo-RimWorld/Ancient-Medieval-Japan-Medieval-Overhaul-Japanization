@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Reinterpret existing MO textile Defs as Japanese ramie/cloth carriers. -->
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="DankPyon_Plant_Flax"]/label</xpath>
+        <value><label>ramie</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="DankPyon_RawFlax"]/label</xpath>
+        <value><label>raw ramie fibre</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="DankPyon_Linen"]/label</xpath>
+        <value><label>ramie cloth</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="DankPyon_Plant_Flax"]/plant/sowResearchPrerequisites</xpath>
+        <value>
+          <sowResearchPrerequisites>
+            <li>DankPyon_TextileSpinning</li>
+          </sowResearchPrerequisites>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/RecipeDef[defName="DankPyon_MakeLinen"]/label</xpath>
+        <value><label>make ramie cloth</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/RecipeDef[defName="DankPyon_MakeLinenBulk"]/label</xpath>
+        <value><label>make ramie cloth x50</label></value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>
