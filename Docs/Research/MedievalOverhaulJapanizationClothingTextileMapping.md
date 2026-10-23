@@ -95,6 +95,14 @@ a compatible manual bench.
 
 Industrial `DankPyon_ClothSpinner` remains outside the historical profile.
 
+### 2026-10-23 partial production implementation / owner split
+
+- **Agriculture** (MO-optional): `Patches/MO_FibreCropPurpose.xml` owns the *cultivation/material classification* fields `DankPyon_Plant_Flax/plant/purpose = Misc` and `DankPyon_RawFlax/thingCategories = Textiles`. Without MO Japanization this is a classification-only compatibility patch, **not** a complete Japanese fibre industry.
+- **Japanization** (MO and complete AMJ suite required): `Patches/Production/JapanizeMORamieTextile.xml` owns the MO textile `label`/`description` for plant, raw material and fabric, two cloth recipes' `label`/`description`/`jobString`, sow research switch from `DankPyon_IntermediateAgriculture` to `DankPyon_TextileSpinning`, and hiding of the *industrial* automated `DankPyon_ClothSpinner` from new builds. Japanese injected labels are taken verbatim from the accepted decision above: カラムシ／青苧／麻布／苧績み・麻布加工. No additional Japanese historical narrative translations are provided before author prose approval.
+- **Not a full visual/biology conversion:** MO's flax crop texture depicts another botanical form and its ordinary crop growth/harvest semantics are annual, unlike the perennial ramie plant. The Western spinning-wheel appearance and `DankPyon_ClothSpinner` old-save state are not retextured. `growDays`, harvest yield, regrowth rules, recipe work amounts, cloth material stats, and research level are not changed/balance-approved. No new images were generated, edited or adopted.
+- **Compatibility:** Retain all upstream DefNames and MO `clothChain` ON/OFF and existing save links. Current source checks do not establish loaded-game 1.6/1.7 behavior; native and UI/image acceptance are pending.
+- **Precedence:** this specific owner split supersedes the old blanket sentence that Japanization alone owns both the fibre crop's farming behavior and its manufacturing. Agriculture owns crop/material classification; Japanization owns integration-specific MO identity, textile manufacture and MO research.
+
 ### MO cloth-chain setting compatibility
 
 MO's own `clothChain` toggle changes this exact loop.
