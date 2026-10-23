@@ -12,6 +12,8 @@ The concept is defined, but there is no dedicated owner repository yet. Project 
 
 本Modは**Medieval OverhaulとAMJの全世界構成Modを必須前提とする、MO Patch + MO Retextureの公式AMJ一式統合レイヤー**である。単に西洋要素を削除するのではなく、MOが持つ中世の素材・加工段階・設備・生産システムを可能な限り再利用しながら、研究進行・名称/説明・Recipe/素材接続・表示資産を古代～中世日本として一貫するよう再構成する。
 
+**2026-10-23 グリフォン幻想動物の通常入手経路遮断（MO 1.6.2.2）：** Agricultureがグリフォンベリーの栽培・料理・醸造・既存拠点戦利品の経路を整理した後、MO Japanizationはそれに付随するMO幻想動物の発生と供給を担当する。`Patches/Production/DisableGriffonOrdinaryAcquisition.xml`で、`DankPyon_GriffonPasses`の`baseChance`を0にしストーリーテラーからの通常ランダム発生を停止、グリフォンのAnimalFighter/AnimalExoticという専用`ThingDef.tradeTags`を空にして一般動物商人の供給を遮断する。無精卵・有精卵・グリフォン革の`tradeability=None`で通常商人の取扱いも停止する。**IncidentDef／ThingDef／PawnKindDef／卵・革・孵化・既存セーブの定義は削除しない**。既存の個体・卵・商人の在庫や外部Modの直接生成、特別なイベント実行、デバッグSpawnは禁止しない。`DankPyon_TreeGriffonBerry`は専用研究として不要だが、RimWorld 1.6 `MainTabWindow_Research.VisibleResearchProjects`は難易度`hideWhen`でフィルタするだけで**常時非表示の安全なXMLスイッチが存在しない**。研究Def削除や場外座標送り、誤った難易度条件設定は互換・UX上採用せず、研究ツリー再構築時の適切な表示経路の実装までDefと表示を暫定維持する。専用研究の残存を完成・全面除外と称さない。完成した薬物系MO野生薬草4種は監査保留を維持。XMLとMO実定義の静的照合は実施、実ゲーム1.6／1.7ロード・生成・UI／既存セーブの最終検証は未実施。
+
 **2026-10-23 作者決定 — MO基盤の暫定活用と段階的独立:** AMJは最初からMOの素材加工／工房／研究／生産フレームワークを全部複製しない。**当面の統合ゲーム構成ではMOの適合する汎用機能を利用する**が、ゲーム内容・歴史考証・バランスはAMJの各正式Ownerが決める。Japanizationはその**MO依存の移行期アダプタ**であり、MOの西洋・幻想コンテンツを保存する権利を意味しない。日本固有の素材・作物・料理等は対応する独立AMJ Modが引き続き所有し、特に作物／料理の同一生産ループを分割しない。独立化は機能と原料→加工→完成品→研究・交易をひとまとまりとして、代替実装のプレイ上の価値が維持コストを上回る場合に実行する。**今はMOやJapanizationの必須依存・既存Def/Recipe/研究/保存参照を削除しない。** Japanizationを将来廃止すると決定したわけでもない。MO薬草4種（Mindwort/Poppy/Fleawort/Fly agaric）は専用薬品の供給源として現状維持・監査保留。MOに依存しないAMJ Modの既存単独動作は変更しない。正式な横断方針は[Project Architecture](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/Architecture.md)に従う。
 
 基本構成:
