@@ -12,6 +12,8 @@ The concept is defined, but there is no dedicated owner repository yet. Project 
 
 本Modは**Medieval OverhaulとAMJの全世界構成Modを必須前提とする、MO Patch + MO Retextureの公式AMJ一式統合レイヤー**である。単に西洋要素を削除するのではなく、MOが持つ中世の素材・加工段階・設備・生産システムを可能な限り再利用しながら、研究進行・名称/説明・Recipe/素材接続・表示資産を古代～中世日本として一貫するよう再構成する。
 
+**2026-10-23 作者決定 — MO基盤の暫定活用と段階的独立:** AMJは最初からMOの素材加工／工房／研究／生産フレームワークを全部複製しない。**当面の統合ゲーム構成ではMOの適合する汎用機能を利用する**が、ゲーム内容・歴史考証・バランスはAMJの各正式Ownerが決める。Japanizationはその**MO依存の移行期アダプタ**であり、MOの西洋・幻想コンテンツを保存する権利を意味しない。日本固有の素材・作物・料理等は対応する独立AMJ Modが引き続き所有し、特に作物／料理の同一生産ループを分割しない。独立化は機能と原料→加工→完成品→研究・交易をひとまとまりとして、代替実装のプレイ上の価値が維持コストを上回る場合に実行する。**今はMOやJapanizationの必須依存・既存Def/Recipe/研究/保存参照を削除しない。** Japanizationを将来廃止すると決定したわけでもない。MO薬草4種（Mindwort/Poppy/Fleawort/Fly agaric）は専用薬品の供給源として現状維持・監査保留。MOに依存しないAMJ Modの既存単独動作は変更しない。正式な横断方針は[Project Architecture](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/Architecture.md)に従う。
+
 基本構成:
 - MOなしで遊べる各AMJ Modは、従来どおり独立した主要ゲームループを持つ
 - MOを利用する日本化構成: `RimWorld + Medieval Overhaul + AMJ世界構成の全Mod + Ancient & Medieval Japan - Medieval Overhaul Japanization`。**MO単独＋Japanization／一部AMJ ModだけのJapanization構成は非対応**
