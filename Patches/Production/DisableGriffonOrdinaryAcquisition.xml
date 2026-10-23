@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!--
+    2026-10-23 AMJ historical MO integration: disable ordinary griffon animal
+    acquisition as the companion to Agriculture's fantasy berry exclusion.
+    Keep original IncidentDef, ThingDef, PawnKindDef, eggs, leather, hatcher
+    and research identities for legacy saves and external references.
+    MO Japanization requires MO; no new dependency is introduced.
+  -->
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <!-- Storyteller-generated wandering griffon event; preserve the Def. -->
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/IncidentDef[defName="DankPyon_GriffonPasses"]/baseChance</xpath>
+        <value>
+          <baseChance>0</baseChance>
+        </value>
+      </li>
+      <!-- Standard StockGenerator_Animals only offers kinds matching their
+           race ThingDef.tradeTags. Clear griffon's two upstream tags, not
+           the globally shared AnimalExotic/AnimalFighter categories. -->
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="DankPyon_Griffon"]/tradeTags</xpath>
+        <value>
+          <tradeTags />
+        </value>
+      </li>
+      <!-- Eggs and special leather stay as Defs, but normal traders must
+           not source new fantastical products after their animal is gated.
+           Upstream individual ThingDefs omit a tradeability member. -->
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="DankPyon_Griffon_EggUnfertilized"]</xpath>
+        <value>
+          <tradeability>None</tradeability>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="DankPyon_Griffon_EggFertilized"]</xpath>
+        <value>
+          <tradeability>None</tradeability>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="DankPyon_Leather_Griffon"]</xpath>
+        <value>
+          <tradeability>None</tradeability>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>
