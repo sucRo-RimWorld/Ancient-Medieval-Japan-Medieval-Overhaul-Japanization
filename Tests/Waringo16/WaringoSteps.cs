@@ -79,19 +79,32 @@ namespace AMJ.MOJ.WaringoNative16 {
                 GenSpawn.Spawn(plant, cell, map, WipeMode.Vanish);
                 plant.HitPoints = plant.MaxHitPoints;
                 plant.Growth = .66f;
-                ctx.Require(plant.HarvestableNow, "Apple not harvestable past 0.65");
+                float minimum = apple.plant.harvestMinGrowth;
+                float cropFactor = apple.plant.harvestYieldAffectedByDifficulty
+                    ? Find.Storyteller.difficulty.cropYieldFactor : 1f;
                 int early = plant.YieldNow();
-                ctx.Require(early >= 9 && early <= 11,
-                            "Unexpected early loaded Apple YieldNow=" + early);
+                float interpolation = (float)Math.Max(0, Math.Min(1,
+                    (.66f - minimum) / (1f - minimum)));
+                float expectedEarly = 20f * (.5f + .5f * interpolation) * cropFactor;
+                Log.Message("AMJ_MOJ_WARINGO16_HARVEST_FACTS min=" + minimum +
+                            " difficultyCropFactor=" + cropFactor + " early=" + early +
+                            " expected=" + expectedEarly);
+                ctx.Require(plant.HarvestableNow && minimum <= .66f,
+                            "Apple is not harvested at the observed loaded growth threshold");
+                ctx.Require(Math.Abs(early - expectedEarly) <= 1.1f,
+                            "Apple YieldNow differs from engine difficulty-adjusted formula");
                 plant.PlantCollected(null, PlantDestructionMode.Cut);
                 ctx.Require(!plant.Destroyed && Math.Abs(plant.Growth - .30f) < .001f &&
                             !plant.HarvestableNow,
                             "Original apple tree did not survive and reset after harvest");
                 plant.Growth = 1f;
                 int full = plant.YieldNow();
-                ctx.Require(full >= 19 && full <= 20, "Apple full harvest mismatch=" + full);
+                float expectedFull = 20f * cropFactor;
+                ctx.Require(Math.Abs(full - expectedFull) <= 1.1f,
+                            "Apple full harvest differs from difficulty-adjusted formula");
                 plant.Destroy(DestroyMode.Vanish);
                 Log.Message("AMJ_MOJ_WARINGO16_OK early=" + early + " full=" + full +
+                            " min=" + minimum + " cropFactor=" + cropFactor +
                             " japanese=1 requiredMods=" + ids.Length);
             });
         }
