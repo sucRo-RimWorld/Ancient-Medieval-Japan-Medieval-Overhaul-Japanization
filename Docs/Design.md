@@ -6,6 +6,10 @@
 
 The concept is defined, but there is no dedicated owner repository yet. Project owns the evolving pre-split design.
 
+**2026-10-24 MOリンゴの文字情報のみ和リンゴ化・研究表示修正（画像スキップ）:** 原本MO 1.6.2.2は果樹`DankPyon_Tree_Apple`の栽培研究`Cocoa`と桑`DankPyon_Tree_Mulberry`の栽培研究`Cocoa`を既に共有し、MOの`Change_ResearchProjectDef.xml`で`Cocoa.label=Fruit tree sowing`・`baseCost=600`に再解釈している。**CocoaというDefNameはゲーム内表示ではなく、現状の研究参照自体は不具合ではない。** Coreの研究説明（ココア・チョコレート）のままでは果樹・養蚕の解禁説明として食い違うため、`Patches/Production/JapanizeMOAppleResearchText.xml`で`Cocoa.description`のみ実際の果樹栽培内容へ修正し、`Languages/Japanese/DefInjected/ResearchProjectDef/MO_FruitTreeSowing.xml`で`Cocoa.label=果樹栽培`と説明を加える。**研究コスト・前提`TreeSowing`・解禁する植物・桑の副産物`DankPyon_Silkworm`は変更しない。** この研究の元DefNameを丸ごと削除・交換・付け直す必要はない。なおCoreのカカオ樹への解禁が同一研究に残る問題は、Agriculture側のバニラ作物の時代選別と別に監査すること。
+
+ユーザー指定により**画像は生成・置換しない**。同PatchでMOの既存リンゴ樹／生リンゴDefNameを維持して英語ラベル・説明のみ`Japanese apple tree`／`Japanese apples`（小型・比較的酸味がある和リンゴ）に改稿し、`Languages/Japanese/DefInjected/ThingDef/MO_Waringo.xml`に`和リンゴの木`／`和リンゴ`および説明を追加する。日本語翻訳Mod`Lucifel.MedievalOH.JPT`（Workshop 2665554648）は1.6原本で旧西洋リンゴの説明を持ち、`Cocoa`の果樹栽培訳を持たないため、`About/About.xml`の**任意`loadAfter`**にこのpackageIdを加え、Japanizationの修正訳を後順位とする。追加の必須依存にはしない。これは**文言の実装**であり、見た目が和リンゴに変わったことは意味しない。原本の樹木・収穫画像は西洋リンゴ相当のまま明記し、画像タスクはユーザー指示どおりスキップする。Agriculture PR #245のパイ・シードルの停止とPR #247の生育・収穫モデル、元`growDays=33`／`harvestYield=20`／腐敗15日／果実栄養0.05／価格1.1は変更しない。MO原本と和訳ZIPの対象XMLに静的照合できるが、英日表示の最終ロード優先順位・採集・研究・1.6/1.7実機の動作は未検証。
+
 #### Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化） / MO日本化レイヤー
 
 旧 `Japan Only` 方針は置き換え、正式名を **`Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化）`** とする。
