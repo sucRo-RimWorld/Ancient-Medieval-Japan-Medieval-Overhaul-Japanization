@@ -40,6 +40,8 @@
     <li>sucro.ancientmedievaljapan.scenarios</li>
     <li>sucro.ancientmedievaljapan.waterworks</li>
     <li>sucro.ancientmedievaljapan.ironmaking</li>
+    <!-- Optional MO Japanese translation: Japanization's corrected names win. -->
+    <li>Lucifel.MedievalOH.JPT</li>
 </loadAfter>
   <description>Development build.
 
