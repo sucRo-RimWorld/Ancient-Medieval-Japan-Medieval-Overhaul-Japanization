@@ -1,6 +1,6 @@
 # Medieval Overhaul Japanization Integration Matrix
 
-**Status:** authoritative Japanization owner integration matrix. **2026-10-16 author correction supersedes the old MO-only/optional-AMJ package profile:** Japanization requires MO **plus every active AMJ world-suite Mod**; independent owners remain usable without Japanization.
+**Status (2026-10-25): ARCHIVED previous Japanization ownership matrix, NOT authoritative for new per-feature MO compatibility.** The author stopped standalone Japanization rollout and chose per-functional-owner optional MO overrides; see Project `Docs/Architecture.md`, Agriculture `Docs/Design.md` and the Japanization `Docs/Design.md` current retirement note. All earlier Layer B centralized owner and required full-suite dependencies below are *historical*. Agriculture PR #258 ported the accepted agricultural/ramie/Cocoa/hay→straw functionality; Japanization PR #35 deleted duplicates while retaining unassigned roof/rain drying and Griffon animal availability source/DLL solely for existing compatibility. Future equipment/iron/factions/drying work is assigned to the relevant function owner; owner Design must be amended before code. **2026-10-16 author correction supersedes the old MO-only/optional-AMJ package profile:** Japanization requires MO **plus every active AMJ world-suite Mod**; independent owners remain usable without Japanization.
 
 This document defines how Japanization interacts with standalone AMJ modules
 and external MO-adjacent systems without becoming a new Core or stealing their
