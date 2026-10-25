@@ -146,6 +146,52 @@ namespace AMJ.MOJ.WaringoNative16 {
                 ctx.Require(Math.Abs(full - expectedFull) <= 1.1f,
                             "Apple full harvest differs from difficulty-adjusted formula");
                 plant.Destroy(DestroyMode.Vanish);
+                // Same one-shot Japanese real-game acceptance: current Agriculture
+                // MO crop values, Japanese crop text and disconnected Western dishes.
+                var carrotPlant = DefDatabase<ThingDef>.GetNamedSilentFail("DankPyon_Plant_Carrots");
+                var carrotRaw = DefDatabase<ThingDef>.GetNamedSilentFail("DankPyon_RawCarrots");
+                var pumpkinPlant = DefDatabase<ThingDef>.GetNamedSilentFail("DankPyon_Plant_Pumpkins");
+                var pumpkinRaw = DefDatabase<ThingDef>.GetNamedSilentFail("DankPyon_RawPumpkins");
+                ctx.Require(carrotPlant != null && carrotPlant.plant != null &&
+                            carrotRaw != null && pumpkinPlant != null &&
+                            pumpkinPlant.plant != null && pumpkinRaw != null,
+                            "Loaded original MO carrot/pumpkin ThingDefs absent");
+                ctx.Require(carrotPlant.description.Contains("東洋系") &&
+                            carrotRaw.description.Contains("東洋系") &&
+                            pumpkinPlant.description.Contains("日本カボチャ") &&
+                            pumpkinRaw.description.Contains("日本カボチャ"),
+                            "Loaded Japanese descriptions differ from accepted historic crop prose");
+                ctx.Require(Math.Abs(carrotPlant.plant.growDays - 6f) < .001f &&
+                            Math.Abs(carrotPlant.plant.harvestYield - 6f) < .001f &&
+                            carrotPlant.plant.sowMinSkill == 4 &&
+                            Math.Abs(carrotPlant.plant.fertilityMin - .7f) < .001f &&
+                            carrotPlant.plant.harvestedThingDef == carrotRaw &&
+                            Math.Abs(pumpkinPlant.plant.growDays - 8f) < .001f &&
+                            Math.Abs(pumpkinPlant.plant.harvestYield - 20f) < .001f &&
+                            pumpkinPlant.plant.sowMinSkill == 8 &&
+                            Math.Abs(pumpkinPlant.plant.fertilityMin - .7f) < .001f &&
+                            pumpkinPlant.plant.harvestedThingDef == pumpkinRaw,
+                            "Loaded Agriculture carrot/pumpkin growth, fertility, skill or harvest mismatch");
+                string[] disabledFoodBills = {
+                    "DankPyon_CookMealCarrotCake",
+                    "DankPyon_CookMealCarrotCakeBulk",
+                    "DankPyon_CookMealCarrotCakeBulkier",
+                    "DankPyon_CookMealPumpkinPie",
+                    "DankPyon_CookMealPumpkinPieBulk",
+                    "DankPyon_CookMealPumpkinPieBulkier",
+                    "DankPyon_CookMealPumpkinFritters",
+                    "DankPyon_CookMealPumpkinFrittersBulk",
+                    "DankPyon_CookMealPumpkinSoup",
+                    "DankPyon_CookMealPumpkinSoupBulk"
+                };
+                foreach (string defName in disabledFoodBills) {
+                    var recipe = DefDatabase<RecipeDef>.GetNamedSilentFail(defName);
+                    ctx.Require(recipe != null &&
+                                (recipe.recipeUsers == null || recipe.recipeUsers.Count == 0),
+                                "Western crop recipe remains in ordinary Bills: " + defName);
+                }
+                Log.Message("AMJ_MOJ_CARROT_PUMPKIN16_OK bills=" + disabledFoodBills.Length +
+                            " minFert=0.7 carrotGrowth=6 pumpkinGrowth=8 japanese=1");
                 Log.Message("AMJ_MOJ_WARINGO16_OK early=" + early + " full=" + full +
                             " min=" + minimum + " cropFactor=" + cropFactor +
                             " japanese=1 requiredMods=" + ids.Length);
