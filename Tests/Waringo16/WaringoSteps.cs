@@ -23,6 +23,49 @@ namespace AMJ.MOJ.WaringoNative16 {
 
     [PickleSteps]
     public sealed class WaringoSteps {
+        // New English-only profile checks display/Def inheritance, not the
+        // already accepted Japanese profile's harvest or growth scenario.
+        [Then("the loaded English waringo and fruit-tree research match the approved source")]
+        public async Task CheckEnglish(PickleContext ctx) {
+            await ctx.WaitFrames(2);
+            await OnGameThread.Invoke(delegate {
+                ctx.Require(Find.CurrentMap != null, "Real English Quickstart map missing");
+                string[] required = {
+                    "dankpyon.medieval.overhaul", "sucro.ancientmedievaljapan.environment",
+                    "sucro.ancientmedievaljapan.core", "sucro.ancientmedievaljapan.scenarios",
+                    "sucro.ancientmedievaljapan.waterworks", "sucro.ancientmedievaljapan.ironmaking",
+                    "sucro.ancientmedievaljapan.medievaloverhauljapanization"
+                };
+                var loaded = LoadedModManager.RunningModsListForReading
+                    .Select(x => x.PackageId.ToLowerInvariant()).ToArray();
+                foreach (string packageId in required)
+                    ctx.Require(loaded.Contains(packageId), "Missing real English-profile Mod: " + packageId);
+
+                var tree = DefDatabase<ThingDef>.GetNamedSilentFail("DankPyon_Tree_Apple");
+                var apples = DefDatabase<ThingDef>.GetNamedSilentFail("DankPyon_RawApples");
+                var mulberry = DefDatabase<ThingDef>.GetNamedSilentFail("DankPyon_Tree_Mulberry");
+                var silk = DefDatabase<ThingDef>.GetNamedSilentFail("DankPyon_Silkworm");
+                var research = DefDatabase<ResearchProjectDef>.GetNamedSilentFail("Cocoa");
+                ctx.Require(tree != null && tree.plant != null && apples != null &&
+                            mulberry != null && mulberry.plant != null && silk != null &&
+                            research != null, "Missing original MO English Def");
+                ctx.Require(tree.label == "Japanese apple tree" &&
+                            apples.label == "Japanese apples" &&
+                            tree.description.Contains("relatively tart") &&
+                            apples.description.Contains("relatively tart"),
+                            "English waringo labels or descriptions differ from approved source");
+                ctx.Require(research.label == "Fruit tree sowing" &&
+                            research.description.Contains("silkworms"),
+                            "English fruit-tree research label/description mismatch");
+                ctx.Require(tree.plant.sowResearchPrerequisites != null &&
+                            tree.plant.sowResearchPrerequisites.Contains(research) &&
+                            mulberry.plant.sowResearchPrerequisites != null &&
+                            mulberry.plant.sowResearchPrerequisites.Contains(research),
+                            "Original MO English apple/mulberry research links disconnected");
+                Log.Message("AMJ_MOJ_WARINGO16_EN_OK english=1 requiredMods=" + required.Length);
+            });
+        }
+
         [Then("the loaded Japanese waringo and fruit-tree research match the approved source")]
         public async Task Check(PickleContext ctx) {
             await ctx.WaitFrames(2);
