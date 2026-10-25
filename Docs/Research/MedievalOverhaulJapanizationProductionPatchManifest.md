@@ -1,6 +1,6 @@
 # Medieval Overhaul Japanization — Production Patch Manifest
 
-**Status:** Project-owned pre-split implementation manifest.
+**Status (2026-10-25 supersession): ARCHIVED as a centralized full-suite production plan.** User-authorized direct per-function MO overrides replace this whole-patch package proposal. Agriculture main PR #258 owns fruit/crop/ramie/hay→straw; Japanization PR #35 removed the old four patch and five translation files. The old implementation steps below are historical migration context, NOT active implementation specifications. **Still-running legacy source is restricted to 3 production patches (roofed/rain dryers and Griffon ordinary acquisition) and the saved 1.6 rain-dryer DLL**, pending accepted future functional owner and save-compatible cutover. No centralized research/weapon/architecture/faction implementation here.
 
 This is the implementation breakdown for the future dedicated
 `AMJ - Medieval Overhaul Japanization` repository.
