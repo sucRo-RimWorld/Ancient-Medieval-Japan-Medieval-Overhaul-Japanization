@@ -1,8 +1,8 @@
 # AMJ - Medieval Overhaul Japanization Coordination
 
-## MOJ-CARROT-PUMPKIN-COPY-PROPOSAL-20261025 — staged, author text approval pending
+## MOJ-CARROT-PUMPKIN-COPY-APPROVED-20261025 — English/Japanese descriptions accepted
 
-**Owner:** Japanization crop descriptions. Proposal branch `feat/mo-carrot-pumpkin-description-proposal-20261025` holds four original MO Plant/Raw ThingDef description replacements and four matching JA DefInjected descriptions. All labels, crop mechanics, research, item balance and graphics unchanged; image work explicitly skipped. Author's historical wording approval is required **before main merge**; do not confuse a reviewed static XPath4/4 source contract with loaded game tests. Formal proposed English/Japanese wording is in `Docs/Design.md` and production XML of this branch, backed by ALIC history and Agriculture's adopted Eastern carrot/Japanese pumpkin botanical targets. Avoid duplicating the work in Agriculture or asking the author to relay owner handoff. Consolidated 1.6 native testing remains later work, not automatically triggered.
+**Owner:** Japanization crop descriptions. Author approved the exact four original MO Plant/Raw ThingDef description replacements and four matching JA DefInjected descriptions in PR #32. All labels, crop mechanics, research, item balance and graphics unchanged; image work explicitly skipped. Author approved historical wording on 2026-10-25; source integration may proceed via reviewed PR #32; do not confuse a reviewed static XPath4/4 source contract with loaded game tests. Formal accepted English/Japanese wording is in `Docs/Design.md` and production XML, backed by ALIC history and Agriculture's adopted Eastern carrot/Japanese pumpkin botanical targets. Avoid duplicating the work in Agriculture or asking the author to relay owner handoff. Consolidated 1.6 native testing remains later work, not automatically triggered.
 
 ## MOJ-AGRI-CARROT-PUMPKIN-PRESENTATION-20261025 — Agriculture botanical target requires MO display ownership
 
