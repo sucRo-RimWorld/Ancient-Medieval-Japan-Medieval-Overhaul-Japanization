@@ -1,5 +1,10 @@
 # Ancient & Medieval Japan - Medieval Overhaul Japanization（中世日本 - Medieval Overhaul日本化） Agent Instructions
 
+## 2026-10-25 author decision — transitional repository, retire standalone publication
+
+**This is the current instruction and supersedes the older all-suite product-expansion commitments below.** The author chose direct optional MO overlays **owned by each corresponding AMJ function Mod**. Do not design or ship new Japanization production content, start the planned whole-MO research/architecture/weapons/faction overhaul here, or release this standalone Mod. Retain this repository **temporarily** as the source/archive and compatibility provider for existing not-yet-migrated original MO drying-rack roof/rain behavior (C# DLL) and Griffon animal incident/trade supply suppression, and as a read-only historical source for already transferred work. Do not delete the legacy packageId, currently referenced rain-damage comp class/assembly, saved-game provider, or original old-test evidence until actual dependency/compatibility and successor placement are verified. Existing owner main documents, not older mapping ideas in this repo, govern new implementation. The conditional MO crop/ramie/fruit texts and straw-process patch have migrated to Agriculture main PR #258; do not reintroduce duplicate patches here. Completing retirement requires explicit evidence that all remaining runtime files have a replacement owner and no old save or subscriber requires the legacy DLL/provider. Cross-owner handoff via main:Docs/Coordination.md (coordination only).
+
+
 ## Start here
 
 1. Read this file and `main:Docs/Coordination.md`; locate the latest relevant owner/status/evidence, including later corrections. Historical entries are not current approval.
